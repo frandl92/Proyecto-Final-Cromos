@@ -48,7 +48,7 @@ const login = async (req, res, next) => {
 const getUsuarioID = async (req, res, next) => {
   try {
     const id = req.params.id;
-    const usuarioByID = await User.findById(id);
+    const usuarioByID = await User.findById(id).populate("album");
     return res.json({
       status: 200,
       message: HTTPSTATUSCODE[200],
@@ -62,7 +62,7 @@ const getUsuarioID = async (req, res, next) => {
 
 const getAllUsuarios = async (req, res, next) => {
   try {
-    const allUsuarios = await User.find();
+    const allUsuarios = await User.find().populate("album");
     return res.json({
       status: 200,
       message: HTTPSTATUSCODE[200],
@@ -81,7 +81,10 @@ const patchUsuarios = async (req, res, next) => {
     patchUsuario._id = id;
     const usuarioData= await User.findByIdAndUpdate(id,patchUsuario)
 
-  //   patchMesa.autor =[...mesaData.autor, ...patchMesa.autor]
+   
+    patchUsuario.album=[...usuarioData.album, ...patchUsuario.album]
+
+    patchUsuario.repetido=[...usuarioData.repetido, ...patchUsuario.repetido]
 
     if (usuarioData.imagen) {
       deleteFile(usuarioData.imagen);
