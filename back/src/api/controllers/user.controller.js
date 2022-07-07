@@ -45,7 +45,79 @@ const login = async (req, res, next) => {
   }
 };
 
+const getUsuarioID = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const usuarioByID = await User.findById(id);
+    return res.json({
+      status: 200,
+      message: HTTPSTATUSCODE[200],
+      Usuario: usuarioByID,
+    });
+  } catch (error) {
+    return next(error);
+  }
+};
+
+
+const getAllUsuarios = async (req, res, next) => {
+  try {
+    const allUsuarios = await User.find();
+    return res.json({
+      status: 200,
+      message: HTTPSTATUSCODE[200],
+      Usuario: allUsuarios,
+    });
+  } catch (error) {
+    return next(error);
+  }
+};
+
+const patchUsuarios = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const patchUsuario = new User(req.body);  
+    patchUsuario._id = id;
+    const usuarioData= await User.findByIdAndUpdate(id,patchUsuario)
+
+  //   patchMesa.autor =[...mesaData.autor, ...patchMesa.autor]
+
+    if (usuarioData.imagen) {
+      deleteFile(usuarioData.imagen);
+      }
+
+    if (req.file) {
+      patchUsuario.imagen = req.file.path;
+    }
+
+  //   const CromoDB = await Mesa.findByIdAndUpdate(id, patchMesa);
+    
+    return res.status(200).json({ nuevo: patchUsuario, vieja: usuarioData });
+  } catch (error) {
+    return next(error);
+  }
+};
+
+const deleteUsuario = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const usuarioBorrado = await User.findByIdAndDelete(id);
+
+    return res.status(200).json(usuarioBorrado);
+  } catch (error) {
+    return next(error);
+  }
+};
+
+
+
 module.exports = {
   register,
   login,
+  getAllUsuarios,
+  patchUsuarios,
+  getUsuarioID,
+  deleteUsuario
 };
