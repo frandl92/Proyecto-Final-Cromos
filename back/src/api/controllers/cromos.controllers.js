@@ -80,10 +80,8 @@ const getCromoByID = async (req, res, next) => {
     try {
       const { id } = req.params;
   
-      const patchCromo = new Cromo(req.body);
-  
+      const patchCromo = new Cromo(req.body);  
       patchCromo._id = id;
-
       const cromoData= await Cromo.findByIdAndUpdate(id,patchCromo)
 
     //   patchMesa.autor =[...mesaData.autor, ...patchMesa.autor]

@@ -10,7 +10,7 @@ const  {getAllCromos, getCromoByID, getCromoByNombre, createCromos, deleteCromos
 router.get("/", getAllCromos);
 router.get("/id/:id", getCromoByID);
 router.get("/nombre/:nombre", getCromoByNombre);
-router.post("/", createCromos);
+router.post("/", upload.single("imagen"), createCromos);
 router.delete('/:id', upload.single("imagen"), deleteCromos);
 router.patch('/:id', upload.single("imagen"), patchCromos)
 
