@@ -47,6 +47,7 @@ const getCromoByID = async (req, res, next) => {
   };
 
   const createCromos = async (req, res, next) => {
+    console.log(req.body);
     try {
       const newCromos = new Cromo(req.body);
       if (req.file) {
