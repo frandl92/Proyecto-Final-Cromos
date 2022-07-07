@@ -2,6 +2,7 @@ const User = require("../models/user.model");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const HTTPSTATUSCODE = require("../../utils/httpstatuscode");
+const Cromo = require("../models/cromos.models");
 
 const register = async (req, res, next) => {
   try {
@@ -48,7 +49,7 @@ const login = async (req, res, next) => {
 const getUsuarioID = async (req, res, next) => {
   try {
     const id = req.params.id;
-    const usuarioByID = await User.findById(id).populate("album");
+    const usuarioByID = await User.findById(id).populate("album").populate("repetido");
     return res.json({
       status: 200,
       message: HTTPSTATUSCODE[200],
@@ -62,7 +63,7 @@ const getUsuarioID = async (req, res, next) => {
 
 const getAllUsuarios = async (req, res, next) => {
   try {
-    const allUsuarios = await User.find().populate("album");
+    const allUsuarios = await User.find().populate("album").populate("repetido");
     return res.json({
       status: 200,
       message: HTTPSTATUSCODE[200],
@@ -79,12 +80,14 @@ const patchUsuarios = async (req, res, next) => {
 
     const patchUsuario = new User(req.body);  
     patchUsuario._id = id;
-    const usuarioData= await User.findByIdAndUpdate(id,patchUsuario)
-
+    const usuarioData= await User.findByIdAndUpdate(id,patchUsuario).populate("album").populate("repetido")
+  
    
     patchUsuario.album=[...usuarioData.album, ...patchUsuario.album]
 
     patchUsuario.repetido=[...usuarioData.repetido, ...patchUsuario.repetido]
+
+    
 
     if (usuarioData.imagen) {
       deleteFile(usuarioData.imagen);
@@ -94,9 +97,9 @@ const patchUsuarios = async (req, res, next) => {
       patchUsuario.imagen = req.file.path;
     }
 
-  //   const CromoDB = await Mesa.findByIdAndUpdate(id, patchMesa);
+    const usuarioDB = await User.findByIdAndUpdate(id, patchUsuario);
     
-    return res.status(200).json({ nuevo: patchUsuario, vieja: usuarioData });
+    return res.status(200).json({ nuevo: usuarioDB, vieja: usuarioData });
   } catch (error) {
     return next(error);
   }
