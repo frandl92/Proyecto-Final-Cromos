@@ -49,7 +49,9 @@ const login = async (req, res, next) => {
 const getUsuarioID = async (req, res, next) => {
   try {
     const id = req.params.id;
-    const usuarioByID = await User.findById(id).populate("album").populate("repetido");
+    const usuarioByID = await User.findById(id)
+      .populate("album")
+      .populate("repetido");
     return res.json({
       status: 200,
       message: HTTPSTATUSCODE[200],
@@ -60,10 +62,11 @@ const getUsuarioID = async (req, res, next) => {
   }
 };
 
-
 const getAllUsuarios = async (req, res, next) => {
   try {
-    const allUsuarios = await User.find().populate("album").populate("repetido");
+    const allUsuarios = await User.find()
+      .populate("album")
+      .populate("repetido");
     return res.json({
       status: 200,
       message: HTTPSTATUSCODE[200],
@@ -78,32 +81,63 @@ const patchUsuarios = async (req, res, next) => {
   try {
     const { id } = req.params;
 
-    const patchUsuario = new User(req.body);  
+    const patchUsuario = new User(req.body);
     patchUsuario._id = id;
-    const usuarioData= await User.findByIdAndUpdate(id,patchUsuario).populate("album").populate("repetido")
-  
-   
-    patchUsuario.album=[...usuarioData.album, ...patchUsuario.album]
+    const usuarioData = await User.findByIdAndUpdate(id, patchUsuario)
+      .populate("album")
+      .populate("repetido");
 
-    patchUsuario.repetido=[...usuarioData.repetido, ...patchUsuario.repetido]
+    patchUsuario.album = [...usuarioData.album, ...patchUsuario.album];
 
-    
+    patchUsuario.repetido = [...usuarioData.repetido, ...patchUsuario.repetido];
 
     if (usuarioData.imagen) {
       deleteFile(usuarioData.imagen);
-      }
+    }
 
     if (req.file) {
       patchUsuario.imagen = req.file.path;
     }
 
     const usuarioDB = await User.findByIdAndUpdate(id, patchUsuario);
-    
+
     return res.status(200).json({ nuevo: usuarioDB, vieja: usuarioData });
   } catch (error) {
     return next(error);
   }
 };
+
+
+const quitarCromo = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const deleteCromo = req.body.deleteCromo;
+    console.log(deleteCromo);
+    console.log(id)
+   
+   
+    const usuarioData = await User.findByIdAndUpdate(id, deleteCromo)
+      .populate("album")
+      .populate("repetido");
+      console.log(usuarioData);
+
+     const find = usuarioData.repetido.find(element => element === deleteCromo)
+     console.log(find);
+    const index = deleteCromo.repetido.indexOf(find)
+    const remp = deleteCromo.repetido.splice(index,1)
+    console.log(remp)
+    console.log(deleteCromo.repetido)
+
+   
+    const usuarioDB = await User.findByIdAndUpdate(id, deleteCromo);
+
+    return res.status(200).json({ nuevo: usuarioDB, vieja: usuarioData });
+  } catch (error) {
+    return next(error);
+  }
+};
+
 
 const deleteUsuario = async (req, res, next) => {
   try {
@@ -117,13 +151,12 @@ const deleteUsuario = async (req, res, next) => {
   }
 };
 
-
-
 module.exports = {
   register,
   login,
   getAllUsuarios,
   patchUsuarios,
   getUsuarioID,
-  deleteUsuario
+  deleteUsuario,
+  quitarCromo
 };
