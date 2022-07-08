@@ -8,8 +8,7 @@ import { API } from "../../sevices/Api";
 const LoginComponent = () => {
 
     const { register, handleSubmit } = useForm();
-    const setJwt = useContext(JwtContext);
-
+    const {setAdmin, setJwt} = useContext(JwtContext);
     //const navigate = useNavigate ();
 
     const onSubmit = (formData) => {
@@ -17,9 +16,16 @@ const LoginComponent = () => {
         localStorage.setItem("token", res.data.data.token);
         localStorage.setItem("user", res.data.data.user.email);
         setJwt(localStorage.getItem("token"));
+        if (res.data.data.user.rol === "admin") {
+          setAdmin(true)
+          
+        }else{
+          setAdmin(false)
+        }
         //navigate("/login");
       });
     };
+
 
 
   return (
@@ -41,7 +47,7 @@ const LoginComponent = () => {
             id="password"
             {...register("password", { required: true })}
           />
-          <button type="submit">Register</button>
+          <button type="submit">Login</button>
         </form>
 
 
