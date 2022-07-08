@@ -1,3 +1,4 @@
+
 import React, { useContext } from 'react';
 import './App.scss';
 import LoginComponent from './components/LoginComponent/LoginComponent';
@@ -10,16 +11,19 @@ import { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { JwtContext } from './context/jwtContext';
 import Login from './pages/Login/Login';
+import ButtonLogout from "./components/Logout/ButtonLogout";
 
 function App() {
   
   const [isAdmin, setAdmin] = useState(true);
 
 
+
   return (
     <>
     <JwtContext.Provider value={{isAdmin,setAdmin,}} >
     <Router>
+
     {isAdmin===false ? <Inicio />: <Navigator/>}
    
     <div className="App">
@@ -35,6 +39,7 @@ function App() {
       </Routes>
 
     </div>
+
     </Router>
     </JwtContext.Provider>
     </>

@@ -1,11 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import "./Navigator.scss";
-// import { JwtContext } from '../context/jwtContext';
+// import {JwtContext} from "../context/jwtContext";
 import axios from "axios";
+import ButtonLogout from '../components/Logout/ButtonLogout';
+
+
 
 const Navigator = () => {
-  // const { jwt } = useContext(JwtContext);
+  //  const { jwt } = useContext(JwtContext);
 
   const [admin, setAdmin] = useState([]);
 
@@ -32,8 +35,11 @@ const Navigator = () => {
         <li>
           <Link to='/mercado'>MERCADO</Link>
         </li>
-        <li>LogOut</li>
+        <li> <ButtonLogout/> </li>
       </ul>
+
+   
+
     </div>
   );
 };
