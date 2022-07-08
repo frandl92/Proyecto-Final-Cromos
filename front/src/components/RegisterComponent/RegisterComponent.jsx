@@ -57,7 +57,6 @@ const RegisterComponent = () => {
           </select>
           <button type="submit">Register</button>
         </form>
-<LoginComponent/>
 
 </>
 

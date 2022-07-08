@@ -1,4 +1,4 @@
-
+import React, { useContext } from 'react';
 import './App.scss';
 import LoginComponent from './components/LoginComponent/LoginComponent';
 import RegisterComponent from './components/RegisterComponent/RegisterComponent';
@@ -8,19 +8,27 @@ import Mercado from './pages/Mercado/Mercado';
 import Navigator from './core/Navigator';
 import { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { JwtContext } from './context/jwtContext';
+import Login from './pages/Login/Login';
 
 function App() {
+  
+  const [isAdmin, setAdmin] = useState(true);
 
-  const [usuario, setUsuario] = useState();
 
   return (
+    <>
+    <JwtContext.Provider value={{isAdmin,setAdmin,}} >
     <Router>
+    {isAdmin===false ? <Inicio />: <Navigator/>}
+   
     <div className="App">
 
-    
-      <Navigator/>
+
+
+      
+      
       <Routes>
-    <Route path="/" element={<Inicio/>}/>
     <Route path="/album" element={<Album/>}/>
     <Route path="/mercado" element={<Mercado/>}/>
 
@@ -28,6 +36,8 @@ function App() {
 
     </div>
     </Router>
+    </JwtContext.Provider>
+    </>
   );
 }
 
