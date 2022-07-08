@@ -1,0 +1,17 @@
+ul {
+  display: flex;
+  justify-content: space-around;
+  height: 5rem;
+  align-items: center;
+  background: linear-gradient(
+    0deg,
+    rgba(48, 174, 138, 1) 0%,
+    rgba(6, 154, 148, 1) 57%
+  );
+  color: white;
+
+  img{
+      height: 4rem;
+      width: 4rem;
+  }
+}
