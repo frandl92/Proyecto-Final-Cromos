@@ -1,20 +1,20 @@
 import React from 'react'
 
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { API } from "../Services/Api";
+//import { useNavigate } from "react-router-dom";
+import { API } from "../../sevices/Api";
 
 const RegisterComponent = () => {
 
     const { register, handleSubmit } = useForm();
 
-    const navigate = useNavigate ();
+    // const navigate = useNavigate ();
 
     const onSubmit = (formData) => {
         API.post("users/register", formData).then((res) => {
             console.log(res);
           });
-          navigate("/login");
+          // navigate("/login");
     }
 
 
@@ -24,6 +24,12 @@ const RegisterComponent = () => {
 
 
     <form onSubmit={handleSubmit(onSubmit)}>
+    <label htmlFor="usuario">Usuario:</label>
+          <input
+            type="text"
+            id="usuario"
+            {...register("usuario", { required: true })}
+          />
           <label htmlFor="email">Email:</label>
           <input
             type="email"
