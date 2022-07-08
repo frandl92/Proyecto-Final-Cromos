@@ -15,13 +15,13 @@ import ButtonLogout from "./components/Logout/ButtonLogout";
 
 function App() {
   
-  const [isAdmin, setAdmin] = useState(true);
-
+  const [isAdmin, setAdmin] = useState(false);
+  const [jwt, setJwt] = useState();
 
 
   return (
     <>
-    <JwtContext.Provider value={{isAdmin,setAdmin,}} >
+    <JwtContext.Provider value={{isAdmin,setAdmin, jwt, setJwt}} >
     <Router>
 
     {isAdmin===false ? <Inicio />: <Navigator/>}
