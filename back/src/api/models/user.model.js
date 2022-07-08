@@ -9,6 +9,7 @@ const UserSchema = new Schema({
   email: { type: String, trim: true, required: true },
   password: { type: String, trim: true, required: true },
   usuario: {type: String, required: true},
+  rol:{type: String, enum:["admin", "user"], defaul:"user", trim: true, required: true},
   album: [{type: Schema.Types.ObjectId, ref: "cromos", required: false}],
   repetido: [{type: Schema.Types.ObjectId, ref: "cromos", required: false}]
 });
