@@ -1,8 +1,10 @@
 import React from 'react'
+import RegisterComponent from '../../components/RegisterComponent/RegisterComponent'
 
 const Inicio = () => {
   return (
-    <div>Inicio</div>
+    
+    <RegisterComponent/>
   )
 }
 
