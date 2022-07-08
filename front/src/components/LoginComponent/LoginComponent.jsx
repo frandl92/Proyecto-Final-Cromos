@@ -3,18 +3,20 @@ import {JwtContext} from "../../context/jwtContext";
 import {useForm } from "react-hook-form";
 //import { useNavigate } from "react-router-dom";
 import { API } from "../../sevices/Api";
+import { useNavigate } from 'react-router-dom';
 
 
 const LoginComponent = () => {
 
     const { register, handleSubmit } = useForm();
     const {setAdmin, setJwt} = useContext(JwtContext);
-    //const navigate = useNavigate ();
+    const navigate = useNavigate ();
 
     const onSubmit = (formData) => {
       API.post("users/login", formData).then((res) => {
+        console.log(res)
         localStorage.setItem("token", res.data.data.token);
-        localStorage.setItem("user", res.data.data.user.email);
+        localStorage.setItem("user", res.data.data.user);
         setJwt(localStorage.getItem("token"));
         if (res.data.data.user.rol === "admin") {
           setAdmin(true)
@@ -22,7 +24,7 @@ const LoginComponent = () => {
         }else{
           setAdmin(false)
         }
-        //navigate("/login");
+        navigate("/album");
       });
     };
 
