@@ -1,8 +1,10 @@
 import React from 'react'
 
 import { useForm } from "react-hook-form";
+import Login from '../../pages/Login/Login';
 //import { useNavigate } from "react-router-dom";
 import { API } from "../../sevices/Api";
+import LoginComponent from '../LoginComponent/LoginComponent';
 
 const RegisterComponent = () => {
 
@@ -55,7 +57,7 @@ const RegisterComponent = () => {
           </select>
           <button type="submit">Register</button>
         </form>
-
+<LoginComponent/>
 
 </>
 

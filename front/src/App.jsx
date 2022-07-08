@@ -1,5 +1,7 @@
 
 import './App.scss';
+import LoginComponent from './components/LoginComponent/LoginComponent';
+import RegisterComponent from './components/RegisterComponent/RegisterComponent';
 import Inicio from './pages/Inicio/Inicio';
 import Album from './pages/Album/Album';
 import Mercado from './pages/Mercado/Mercado';
@@ -14,6 +16,7 @@ function App() {
   return (
     <Router>
     <div className="App">
+
     
       <Navigator/>
       <Routes>
@@ -22,6 +25,7 @@ function App() {
     <Route path="/mercado" element={<Mercado/>}/>
 
       </Routes>
+
     </div>
     </Router>
   );
