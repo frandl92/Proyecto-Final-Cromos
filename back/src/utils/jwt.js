@@ -5,8 +5,11 @@ const generateToken = (id, email) => {
 }
 
 const verifyToken = (token) => {
+    console.log("hola")
     return jwt.verify(token, process.env.JWT_SECRET);
 }
+
+
 
 class JwtUtils {
     static generateToken(id, email) {
@@ -18,4 +21,4 @@ class JwtUtils {
     }
 }
 
-module.exports = JwtUtils;
+module.exports = {verifyToken};
