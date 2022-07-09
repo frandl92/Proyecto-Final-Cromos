@@ -118,7 +118,8 @@ const quitarCromo = async (req, res, next) => {
    
    
     const usuarioData = await User.findByIdAndUpdate(id, deleteCromo)
-      
+      .populate("album")
+      .populate("repetido");
       console.log(usuarioData.repetido);
 
      const find = usuarioData.repetido.find(element => element === deleteCromo)
