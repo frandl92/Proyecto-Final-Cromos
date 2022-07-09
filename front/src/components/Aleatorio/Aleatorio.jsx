@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
 import { SWContext } from "../../context/context";
-import Cromo from "../Cromo/Cromo";
+
 
 const Aleatorio = () => {
   const { cromos } = useContext(SWContext);
@@ -27,7 +27,7 @@ const Aleatorio = () => {
       <h3> el cromo al azar es: {pinta1}</h3>
       <h3> el cromo al azar es: {pinta2}</h3>
 
-    <Cromo/>
+  
 
     </div>
   );
