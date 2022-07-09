@@ -1,20 +1,27 @@
-import React, { useContext } from "react";
+
+import React, { useContext, useState } from "react";
 import Cromo from "../../components/Cromo/Cromo";
 import { SWContext } from "../../context/context";
 import "./album.scss"
 
+
 const Album = () => {
   const { cromos } = useContext(SWContext);
+  const [getCromo, setGetCromo] = useState();
 
   return (
     <>
 
+      <h1>esto es pagina album no tiene nada componetizado</h1>
+      <img className='nav' src={getCromo} alt='...'></img>
 
       {cromos.length ? (
-        <div className="album">
+        <div className='album'>
           {cromos.map((cromo) => (
-            <figure key={cromo._id} className="cromo">
+
+            <figure key={cromo._id} className="cromo" onClick={()=> setGetCromo (cromo.imagen)} >
               <Cromo cromoImg= {cromo.imagen} cromoNombre = {cromo.nombre}></Cromo>
+
             </figure>
           ))}
         </div>

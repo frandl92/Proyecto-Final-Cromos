@@ -27,7 +27,7 @@ const Aleatorio = () => {
       <h3> el cromo al azar es: {pinta1}</h3>
       <h3> el cromo al azar es: {pinta2}</h3>
 
-  
+
 
     </div>
   );
