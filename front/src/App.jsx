@@ -11,6 +11,7 @@ import { JwtContext } from "./context/jwtContext";
 
 import { SWContextProvider } from "./context/context";
 import Aleatorio from "./components/Aleatorio/Aleatorio";
+import CromoDetail from "./components/CromoDetail/CromoDetail";
 
 function App() {
   const [isAdmin, setAdmin] = useState(false);
@@ -30,6 +31,7 @@ function App() {
               <Route path="/mercado" element={<Mercado />} />
               <Route path="/" element={<Inicio />} />
               <Route path="/cromo" element={<Aleatorio />} />
+              <Route path="/album/:nombre" element={<CromoDetail />} />
             </Routes>
           </div>
         </Router>
