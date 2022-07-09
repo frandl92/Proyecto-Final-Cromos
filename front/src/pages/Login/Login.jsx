@@ -1,10 +1,11 @@
 import React from 'react'
 import LoginComponent from '../../components/LoginComponent/LoginComponent'
+import "./Login.scss";
 
 
 const Login = () => {
   return (
-    <div><LoginComponent></LoginComponent></div>
+    <div className="Login"><LoginComponent/></div>
     
   ) 
 }
