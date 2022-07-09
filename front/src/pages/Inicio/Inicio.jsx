@@ -7,14 +7,14 @@ import Login from '../Login/Login'
 import Register from '../Register/Register'
 import ButtonLogout from "../../components/Logout/ButtonLogout"
 
+import"./Inicio.scss";
 
 const Inicio = () => {
   return (
     
-    <div>
+    <div className="inicio">
 
     <Login></Login>
-    <Register></Register>
 
     </div>
   )
