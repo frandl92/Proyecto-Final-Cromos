@@ -6,6 +6,7 @@ const CromosSchema = new Schema(
   {
     posicion: { type: Number, required: false },
     imagen: { type: String, required: false },
+    imagenback: { type: String, required: false },
     nombre: { type: String, required: false },
     nacionalidad: { type: String, required: false },
     rol: { type: String, required: false },

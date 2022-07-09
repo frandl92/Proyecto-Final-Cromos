@@ -1,0 +1,21 @@
+.cromox{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url(https://cdn-icons.flaticon.com/png/512/518/premium/518404.png?token=exp=1657388465~hmac=7d0d956f3428cf4c29ca35b7438c8b50)
+    ;
+    background-position: center;
+    background-size: 48%;
+    background-repeat: no-repeat;
+    border: 5px solid ;
+    border-image: linear-gradient(45deg, #069a94, greenyellow,#9a0690, rgb(255, 47, 50)) 1;
+    height: 14rem;
+    
+    width: 14rem;}
+
+.perfil{
+    width: 7rem;
+    margin-bottom: 2rem;
+}
