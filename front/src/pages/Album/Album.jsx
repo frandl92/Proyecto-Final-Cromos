@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import Cromo from "../../components/Cromo/Cromo";
 import { SWContext } from "../../context/context";
 import "./album.scss"
 
@@ -8,26 +9,12 @@ const Album = () => {
   return (
     <>
 
- 
-      <h1>esto es pagina album no tiene nada componetizado</h1>
 
-    
       {cromos.length ? (
         <div className="album">
           {cromos.map((cromo) => (
             <figure key={cromo._id} className="cromo">
-
-              
-
-              <p>{cromo.posicion}</p>
-              <img src={cromo.imagen} alt={cromo.nombre} />
-
-              
-
-
-              <h3>{cromo.nombre}</h3>
-            
-
+              <Cromo cromoImg= {cromo.imagen} cromoNombre = {cromo.nombre}></Cromo>
             </figure>
           ))}
         </div>
