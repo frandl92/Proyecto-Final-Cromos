@@ -30,6 +30,9 @@ const Navigator = () => {
           <Link to='/'>INICIO</Link>
         </li>
         <li>
+          <Link to='/cromo'>CROMOS</Link>
+        </li>
+        <li>
           <Link to='/album'>ALBUM</Link>
         </li>
         <li>

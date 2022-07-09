@@ -44,17 +44,7 @@ const RegisterComponent = () => {
             id="password"
             {...register("password", { required: true })}
           />
-          <label htmlFor="emoji">Emoji:</label>
-          <select
-            name="emoji"
-            id="emoji"
-            {...register("emoji", { required: true })}
-          >
-            <option value="🧉">🧉</option>
-            <option value="🤑">🤑</option>
-            <option value="🧚🏾">🧚🏾</option>
-            <option value="🥜">🥜</option>
-          </select>
+          
           <button type="submit">Register</button>
         </form>
 
