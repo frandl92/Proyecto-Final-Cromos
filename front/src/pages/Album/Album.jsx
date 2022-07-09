@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import Cromo from "../../components/Cromo/Cromo";
 import { SWContext } from "../../context/context";
 
 const Album = () => {
@@ -14,7 +15,7 @@ const Album = () => {
         <div className="album">
           {cromos.map((cromo) => (
             <figure key={cromo._id} className="cromo">
-              <img src={cromo.imagen} alt={cromo.nombre} />
+              <Cromo cromoImg= {cromo.imagen} cromoNombre = {cromo.nombre}></Cromo>
             </figure>
           ))}
         </div>
