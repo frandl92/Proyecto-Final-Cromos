@@ -112,19 +112,14 @@ const quitarCromo = async (req, res, next) => {
   try {
     const { id } = req.params;
 
-    let deleteCromo = req.body.deleteCromo;
-    
+    let deleteCromo = req.body.deleteCromo;    
    
-    const usuarioData = await User.findById(id)
-    
+    const usuarioData = await User.findById(id)    
       
     deleteCromo = '"'+deleteCromo+'"'
-    const find = usuarioData.repetido.indexOf(usuarioData.repetido.find(element => JSON.stringify(element) === deleteCromo))
-
-    
+    const find = usuarioData.repetido.indexOf(usuarioData.repetido.find(element => JSON.stringify(element) === deleteCromo))    
     
     console.log("algo tenemos",deleteCromo);
-
     
     console.log("cuatro", find)
     
