@@ -112,25 +112,33 @@ const quitarCromo = async (req, res, next) => {
   try {
     const { id } = req.params;
 
-    const deleteCromo = req.body.deleteCromo;
-    console.log(deleteCromo);
-    console.log(id)
+    let deleteCromo = req.body.deleteCromo;
+    
    
-   
-    const usuarioData = await User.findByIdAndUpdate(id, deleteCromo)
-      .populate("album")
-      .populate("repetido");
-      console.log(usuarioData.repetido);
+    const usuarioData = await User.findById(id)
+    
+      
+    deleteCromo = '"'+deleteCromo+'"'
+    const find = usuarioData.repetido.indexOf(usuarioData.repetido.find(element => JSON.stringify(element) === deleteCromo))
 
-     const find = usuarioData.repetido.find(element => element === deleteCromo)
-    //  console.log(find);
-    const index = deleteCromo.repetido.indexOf(find)
-    const remp = deleteCromo.repetido.splice(index,1)
-    console.log(remp)
-    console.log(deleteCromo.repetido)
+    
+    
+    console.log("algo tenemos",deleteCromo);
+
+    
+    console.log("cuatro", find)
+    
+    let repetidos = [...usuarioData.repetido]
+    console.log(repetidos);
+
+    const remp = usuarioData.repetido.splice(find,1)
+
+    console.log(usuarioData, "seis")
+    console.log("cinco",remp)
+   
 
    
-    const usuarioDB = await User.findByIdAndUpdate(id, deleteCromo);
+    const usuarioDB = await User.findByIdAndUpdate(id, usuarioData);
 
     return res.status(200).json({ nuevo: usuarioDB, vieja: usuarioData });
   } catch (error) {
