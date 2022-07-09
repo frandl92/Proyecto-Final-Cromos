@@ -94,9 +94,9 @@ const getCromoByID = async (req, res, next) => {
         patchCromo.imagen = req.file.path;
       }
   
-    //   const CromoDB = await Mesa.findByIdAndUpdate(id, patchMesa);
+    const CromoDB = await Cromo.findByIdAndUpdate(id, patchCromo);
       
-      return res.status(200).json({ nuevo: patchCromo, vieja: cromoData });
+      return res.status(200).json({ nuevo: CromoDB, vieja: cromoData });
     } catch (error) {
       return next(error);
     }
