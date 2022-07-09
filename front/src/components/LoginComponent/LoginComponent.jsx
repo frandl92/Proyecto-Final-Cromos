@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import {JwtContext} from "../../context/jwtContext";
 import {useForm } from "react-hook-form";
-//import { useNavigate } from "react-router-dom";
 import { API } from "../../sevices/Api";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import "./LoginComponent.scss";
 
 
 const LoginComponent = () => {
@@ -34,29 +34,38 @@ const LoginComponent = () => {
 
     <>
 
-
-    <form onSubmit={handleSubmit(onSubmit)}>
- 
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            {...register("email", { required: true })}
-          />
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            {...register("password", { required: true })}
-          />
-          <button type="submit">Login</button>
+    <section>
+    <form onSubmit={handleSubmit(onSubmit)} className="login">
+          <div className="campo">
+            <label htmlFor="email">EMAIL</label>
+            <input
+              type="email"
+              id="email"
+              {...register("email", { required: true })}
+            />
+          </div>
+          <div className="campo">
+            <label htmlFor="password">PASSWORD</label>
+            <input
+              type="password"
+              id="password"
+              {...register("password", { required: true })}
+            />
+          </div>
+          <div >
+          <button type="submit" className="entrar">ENTRAR</button>
+          </div>
         </form>
 
+        <h4>Si todavía no tienes un usuario, clica aquí</h4>
+        <button className="linkregistro"><Link to = "/register">REGISTRARSE</Link></button>
+
+
+        </section>
 
 </>
 
-    
   )
 }
 
-export default LoginComponent
+export default LoginComponent;
