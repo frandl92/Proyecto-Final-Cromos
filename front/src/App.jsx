@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { JwtContext } from "./context/jwtContext";
 
 import { SWContextProvider } from "./context/context";
+import Aleatorio from "./components/Aleatorio/Aleatorio";
 
 function App() {
   const [isAdmin, setAdmin] = useState(false);
@@ -28,6 +29,7 @@ function App() {
               <Route path="/album" element={<Album />} />
               <Route path="/mercado" element={<Mercado />} />
               <Route path="/" element={<Inicio />} />
+              <Route path="/cromo" element={<Aleatorio />} />
             </Routes>
           </div>
         </Router>
