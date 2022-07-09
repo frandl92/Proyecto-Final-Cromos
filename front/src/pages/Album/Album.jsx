@@ -8,7 +8,7 @@ const Album = () => {
   return (
     <>
 
-    <h1> Pintando cromos</h1>
+    
 
     
       {cromos.length ? (
