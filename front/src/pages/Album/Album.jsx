@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import Cromo from "../../components/Cromo/Cromo";
 import { SWContext } from "../../context/context";
+import "./album.scss"
 
 const Album = () => {
   const { cromos } = useContext(SWContext);
@@ -8,9 +9,7 @@ const Album = () => {
   return (
     <>
 
-    
 
-    
       {cromos.length ? (
         <div className="album">
           {cromos.map((cromo) => (
