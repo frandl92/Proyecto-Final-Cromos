@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { SWContext } from '../../context/context';
 import Cromo from '../Cromo/Cromo';
 import './Aleatorio.scss';
@@ -6,15 +6,30 @@ import './Aleatorio.scss';
 const Aleatorio = () => {
   const { cromos } = useContext(SWContext);
 
-  let cromosDiarios = Math.floor(Math.random() * (10 - 1) + 0);
+  const [num, setNum] = useState(0);
+
+  function randomNumberInRange(min, max) {
+    let cromosDiarios = Math.floor(Math.random() * (22 - 1) + 0);
+    return cromosDiarios;
+  }
+
+  useEffect(() => { const interval = setInterval(() => {
+    setNum(randomNumberInRange(0, 22));
+  }, 4000); 
+  return () => { clearInterval(interval);
+  };
+  }, []);
+
+
+  let cromosDiarios = Math.floor(Math.random() * (22 - 1) + 0);
 
   let pinta = cromos[cromosDiarios];
 
-  let cromosDiarios1 = Math.floor(Math.random() * (10 - 1) + 0);
+  let cromosDiarios1 = Math.floor(Math.random() * (22 - 1) + 0);
 
   let pinta1 = cromos[cromosDiarios1];
 
-  let cromosDiarios2 = Math.floor(Math.random() * (10 - 1) + 0);
+  let cromosDiarios2 = Math.floor(Math.random() * (22 - 1) + 0);
 
   let pinta2 = cromos[cromosDiarios2];
 
