@@ -134,7 +134,7 @@ const CreaCromo = () => {
           </div>
 
           <div>
-            <button type="submit" className="linkregistro">
+            <button type="submit" className="linkregistro" >
               CREAR CROMO
             </button>
           </div>
