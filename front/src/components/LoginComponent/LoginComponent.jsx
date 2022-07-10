@@ -22,6 +22,7 @@ const LoginComponent = () => {
         // localStorage.setItem("repes", res.data.data.user.repetido)
         setJwt(localStorage.getItem("token"));
         setUser(res.data.data.user)
+        navigate("/inicio");
         
         
         // setRepes(res.data.data.user.repetido);
