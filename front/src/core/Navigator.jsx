@@ -1,21 +1,26 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import "./Navigator.scss";
-// import {JwtContext} from "../context/jwtContext";
+import {JwtContext} from "../context/jwtContext";
 import axios from "axios";
 import ButtonLogout from '../components/Logout/ButtonLogout';
 
 
 
-const Navigator = () => {
-  //  const { jwt } = useContext(JwtContext);
 
-  const [admin, setAdmin] = useState([]);
+const Navigator = () => {
+  const { jwt, isAdmin, setAdmin} = useContext(JwtContext);
+
+  // const [admin, setAdmin] = useState([]);
+
 
   useEffect(() => {
     const getAllUsuarios = async () => {
      const res = await axios.get ("http://localhost:8005/users/");
      setAdmin(res.data.usuarios.rol)
+    //  if(admin===admin){
+
+    //  }
      console.log(res);
     };
     getAllUsuarios();
@@ -29,6 +34,9 @@ const Navigator = () => {
         <li>
           <Link to='/'>INICIO</Link>
         </li>
+
+      {jwt ? (
+        <>
         <li>
           <Link to='/cromo'>CROMOS</Link>
         </li>
@@ -38,11 +46,23 @@ const Navigator = () => {
         <li>
           <Link to='/mercado'>MERCADO</Link>
         </li>
+
+        {isAdmin===true && (
+          <>
+          <li>
+          <Link to='/editar'>EDITAR</Link>
+        </li>
+        <li>
+          <Link to='/crear'>CREAR</Link>
+        </li>
+        </>)}
+        
         <li> <ButtonLogout/> </li>
+
+      </>): null}
+
       </ul>
-
-   
-
+        
     </div>
   );
 };
