@@ -19,6 +19,7 @@ const CromoDetail = () => {
     };
     getCromoByNombre();
   });
+ 
 
   return (
     <div>

@@ -22,16 +22,22 @@ import Editar from "./pages/Admin/Editar/Editar";
 function App() {
   const [isAdmin, setAdmin] = useState(false);
   const [jwt, setJwt] = useState();
+   const [user, setUser] = useState ([]);
+   console.log(user);
+
+ 
 
   return (
     <>
-      <JwtContext.Provider value={{ isAdmin, setAdmin, jwt, setJwt }}>
-      <SWContextProvider>
+      <JwtContext.Provider value={{ isAdmin, setAdmin, jwt, setJwt, user, setUser}}>
+      <SWContextProvider >
         <Router>
           {/* {isAdmin===false ? <Inicio />: <Navigator/>} */}
 
           <div className="App">
+
             <Navigator></Navigator>
+            
             <Routes>
               <Route path="/album" element={<Album />} />
               <Route path="/mercado" element={<Mercado />} />

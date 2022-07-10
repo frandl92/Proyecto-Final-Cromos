@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import {JwtContext} from "../../context/jwtContext";
 import {useForm } from "react-hook-form";
 import { API } from "../../sevices/Api";
@@ -9,22 +9,31 @@ import "./LoginComponent.scss";
 const LoginComponent = () => {
 
     const { register, handleSubmit } = useForm();
-    const {setAdmin, setJwt} = useContext(JwtContext);
+    const {setAdmin, setJwt, user, setUser } = useContext(JwtContext);
     const navigate = useNavigate ();
+
+    
 
     const onSubmit = (formData) => {
       API.post("users/login", formData).then((res) => {
         console.log(res)
         localStorage.setItem("token", res.data.data.token);
-        localStorage.setItem("user", res.data.data.user);
+        localStorage.setItem("user", JSON.stringify(res.data.data.user));
+        // localStorage.setItem("repes", res.data.data.user.repetido)
         setJwt(localStorage.getItem("token"));
+        setUser(res.data.data.user)
+        
+        
+        // setRepes(res.data.data.user.repetido);
+        
+        
         if (res.data.data.user.rol === "admin") {
           setAdmin(true)
           
         }else{
           setAdmin(false)
         }
-        navigate("/album");
+        
       });
     };
 
