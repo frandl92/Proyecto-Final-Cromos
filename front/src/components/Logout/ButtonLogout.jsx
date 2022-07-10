@@ -11,7 +11,7 @@ const {setJwt} = useContext(JwtContext);
 
   };
 
-  return <button onClick={logout}>Logout</button>
+  return <img src='./assets/logout.png' alt="logout" onClick={logout} className="logout"/>;
 }
 
 export default ButtonLogout
