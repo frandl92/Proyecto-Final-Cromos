@@ -34,18 +34,22 @@ const CromoDetail = () => {
           <p>{detalle.lenguaje}</p>
          
           <p>Rango: {detalle.status}</p>
+          <button className='backToAlbum'><Link to ="/album">VOLVER AL ALBUM</Link></button>
           </div>
 
         <div className='div2'>
-          <img src={detalle.imagenback}></img>
+          <img src={detalle.imagenback} alt="imagenBack"></img>
           <p className='frase'>{detalle.frase}</p>
           </div>
+
+          
 
 
 
 
           </div>
       ) : null}
+      
     </div>
   );
 };
