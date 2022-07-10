@@ -15,6 +15,8 @@ import Aleatorio from "./components/Aleatorio/Aleatorio";
 import CromoDetail from "./components/CromoDetail/CromoDetail"
 
 import Register from "./pages/Register/Register";
+import Repetidos from "./pages/Repetidos/Repetidos";
+import Editar from "./pages/Admin/Editar/Editar";
 
 
 function App() {
@@ -39,6 +41,9 @@ function App() {
               <Route path="/album/:nombre" element={<CromoDetail />} />
 
               <Route path="/register" element={<Register />} />
+              <Route path="/repetidos" element={<Repetidos />} />
+              <Route path="/editar" element={<Editar />} />
+              <Route path="/crear" element={<Repetidos />} />
 
             </Routes>
           </div>
