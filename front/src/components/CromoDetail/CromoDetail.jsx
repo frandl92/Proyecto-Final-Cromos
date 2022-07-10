@@ -1,33 +1,53 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Cromo from '../Cromo/Cromo';
-
+import "./CromoDetail.scss"
 const CromoDetail = () => {
+  const { nombre } = useParams();
 
-    const {nombre} = useParams();
+  const [detalle, setDetalle] = useState();
 
-        const [detalle, setDetalle] = useState();
+  useEffect(() => {
+    const getCromoByNombre = async () => {
+      const res = await axios.get(
+        `http://localhost:8005/cromos/nombre/${nombre}`
+      );
+      setDetalle(res.data.cromo);
 
-        useEffect(() => {
-            const getCromoByNombre = async () => {
-               
+      // console.log("hola");
+    };
+    getCromoByNombre();
+  });
 
-                 const res = await axios.get(`http://localhost:8005/cromos/nombre/${nombre}`);
-                  setDetalle(res.data.cromo);
-                 
-                // console.log("hola");
-
-            };
-            getCromoByNombre();
-        });
-        
   return (
     <div>
-       {detalle ? (<> <h1>{detalle.nombre}</h1></>) : null}      
-     
-    </div>
-  )
-}
+      {detalle ? (
+         <div className='padre'>
 
-export default CromoDetail
+          {' '}
+          <div className='div1'>
+          <h1>{detalle.nombre}</h1>
+          
+          <p>{detalle.nacionalidad}</p>
+          <p className='rol'>{detalle.rol}</p>
+          <p>{detalle.lenguaje}</p>
+         
+          <p>Rango: {detalle.status}</p>
+          </div>
+
+        <div className='div2'>
+          <img src={detalle.imagenback}></img>
+          <p className='frase'>{detalle.frase}</p>
+          </div>
+
+
+
+
+          </div>
+      ) : null}
+    </div>
+  );
+};
+
+export default CromoDetail;
