@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { JwtContext} from "../../context/jwtContext"
+import "./ButtonLogout.scss"
 
 const ButtonLogout = () => {
 const {setJwt} = useContext(JwtContext);
@@ -15,7 +16,7 @@ const navigate = useNavigate();
 
   };
 
-  return <button onClick={logout}>Logout</button>
+  return <button className="Logout" onClick={logout}>Logout</button>
 }
 
 export default ButtonLogout

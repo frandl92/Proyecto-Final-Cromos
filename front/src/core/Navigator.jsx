@@ -29,30 +29,33 @@ const Navigator = () => {
   return (
     <div>
       <ul>
-        <li className='logo'> <img src='./assets/LogoCromos.png' alt='logo'/> </li>
-        
-        <li>
-          <Link to='/'>INICIO</Link>
-        </li>
 
+      <li className="logo">
+        <img src='./assets/LogoCromos.png' alt='logo'/>
+        <h3>CROMIFY</h3>
+      </li>
+      
       {jwt ? (
         <>
-        <li>
+        <li className="opcionmenu">
+          <Link to='/inicio'>INICIO</Link>
+        </li>
+        <li className="opcionmenu">
           <Link to='/cromo'>CROMOS</Link>
         </li>
-        <li>
+        <li className="opcionmenu">
           <Link to='/album'>ALBUM</Link>
         </li>
-        <li>
+        <li className="opcionmenu">
           <Link to='/mercado'>MERCADO</Link>
         </li>
 
         {isAdmin===true && (
           <>
-          <li>
+          <li className="opcionmenu">
           <Link to='/editar'>EDITAR</Link>
         </li>
-        <li>
+        <li className="opcionmenu">
           <Link to='/crear'>CREAR</Link>
         </li>
         </>)}
