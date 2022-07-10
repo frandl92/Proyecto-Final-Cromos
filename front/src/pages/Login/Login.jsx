@@ -5,6 +5,7 @@ import "./Login.scss";
 
 const Login = () => {
   return (
+    
     <div className="Login"><LoginComponent/></div>
     
   ) 

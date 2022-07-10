@@ -9,6 +9,7 @@ export const SWContextProvider = ({ children }) =>{
 
     const [cromos, setCromos] = useState([]);
     
+    
     useEffect(() => {
         const getCromos = async () => {
           const cromosAPI = await fetch("http://localhost:8005/cromos");

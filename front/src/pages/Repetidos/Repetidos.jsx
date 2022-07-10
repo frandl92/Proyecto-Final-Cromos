@@ -3,12 +3,12 @@ import { SWContext } from "../../context/context";
 
 const Repetidos = () => {
 
-    const { cromos } = useContext(SWContext);
-    
+    const { repes } = useContext(SWContext);
+    console.log(repes);
 
     return (
         <>
-        <h1>Esto es pagina de cromos repetidos</h1>
+        
 
         </>
     )

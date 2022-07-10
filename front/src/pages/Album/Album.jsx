@@ -3,17 +3,21 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Cromo from "../../components/Cromo/Cromo";
 import { SWContext } from "../../context/context";
+import { JwtContext } from "../../context/jwtContext";
 import "./album.scss"
 
 
 const Album = () => {
-  const { cromos } = useContext(SWContext);
+  const { cromos,  } = useContext(SWContext);
   const [getCromo, setGetCromo] = useState();
-
+  const {user} = useContext(JwtContext)
+  console.log(user);
   return (
     <>
+    
 
-      <h1>esto es pagina album no tiene nada componetizado</h1>
+      <p>{user.email}</p>
+    
       <img className='nav' src={getCromo} alt='...'></img>
 
       {cromos.length ? (
@@ -21,7 +25,7 @@ const Album = () => {
           {cromos.map((cromo) => (
 
             <Link key={cromo._id} to={`${cromo.nombre}`}>
-            <figure key={cromo._id} className="cromo" onClick={()=> setGetCromo (cromo.imagen)} >
+            <figure key={cromo._id}   onClick={()=> setGetCromo (cromo.imagen)} >
               <Cromo cromoImg= {cromo.imagen} cromoNombre = {cromo.nombre}></Cromo>
 
             </figure>
@@ -35,5 +39,8 @@ const Album = () => {
     </>
   );
 };
+// {user.album.includes(cromo._id) ? className="cromo" : className= "opaco" } 
+// className="cromo"
+// {user.album.includes(cromo._id) ? className="cromo" : className= "opaco"} 
 
 export default Album;
