@@ -94,13 +94,13 @@ const patchCromos = async (req, res, next) => {
       patchCromo.imagen = req.file.path;
     }
 
-    // if (cromoData.imagenback) {
-    //   deleteFile(cromoData.imagenback);
-    // }
+    if (cromoData.imagenback) {
+      deleteFile(cromoData.imagenback);
+    }
 
-    // if (req.file) {
-    //   patchCromo.imagenback = req.file.path;
-    // }
+    if (req.file) {
+      patchCromo.imagenback = req.file.path;
+    }
 
     const CromoDB = await Cromo.findByIdAndUpdate(id, patchCromo);
 
