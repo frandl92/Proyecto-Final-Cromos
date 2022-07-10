@@ -1,8 +1,13 @@
-import React from 'react'
+import CreaCromo from "../../../components/CreaCromo/CreaCromo"
+
 
 const Crear = () => {
   return (
-    <div>Crear</div>
+    <div>
+     <CreaCromo/>
+    
+    
+    </div>
   )
 }
 

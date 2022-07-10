@@ -17,6 +17,7 @@ import CromoDetail from "./components/CromoDetail/CromoDetail"
 import Register from "./pages/Register/Register";
 import Repetidos from "./pages/Repetidos/Repetidos";
 import Editar from "./pages/Admin/Editar/Editar";
+import Crear from "./pages/Admin/Crear/Crear";
 
 
 function App() {
@@ -49,7 +50,7 @@ function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/repetidos" element={<Repetidos />} />
               <Route path="/editar" element={<Editar />} />
-              <Route path="/crear" element={<Repetidos />} />
+              <Route path="/crear" element={<Crear />} />
 
             </Routes>
           </div>
