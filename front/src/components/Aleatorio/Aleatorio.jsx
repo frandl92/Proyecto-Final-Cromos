@@ -1,6 +1,7 @@
 
 import React, { useContext, useEffect, useState } from 'react';
 import { SWContext } from '../../context/context';
+import Repetidos from '../../pages/Repetidos/Repetidos';
 import BotonAnadir from '../BotonAnadir/BotonAnadir';
 import Cromo from '../Cromo/Cromo';
 import './Aleatorio.scss';
@@ -38,7 +39,7 @@ const Aleatorio = () => {
   let pinta2 = cromos[cromosDiarios2];
 
   return (
-
+<>
     <div className='aleatorio'>
       <figure classname='figure'>
         <Cromo cromoImg={pinta.imagen} cromoNombre={pinta.nombre}></Cromo>
@@ -55,7 +56,7 @@ const Aleatorio = () => {
     </div>
 
 
-      <Repetidos />
+      <Repetidos/>
     </>
 
   );

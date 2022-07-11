@@ -13,11 +13,9 @@ const Album = () => {
   const {user, album} = useContext(JwtContext)
 
 
-  const { cromos, getCromos } = useContext(SWContext);
+  
 
-  const [getCromo, setGetCromo] = useState();
-  const { user } = useContext(JwtContext);
-
+  
   
   useEffect(()=> {
     getCromos();
@@ -33,7 +31,7 @@ const Album = () => {
 
 
   return (
-<>
+
     <div className='mialbum'>
     <div className='arriba'>
       <img src='https://cdn-icons-png.flaticon.com/512/1902/1902705.png' alt='album'></img>
@@ -76,6 +74,7 @@ const Album = () => {
       )}
     </div>
   );
-};
+}
+
 
 export default Album;
