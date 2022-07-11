@@ -20,7 +20,7 @@ const register = async (req, res, next) => {
 
 const login = async (req, res, next) => {
   try {
-    const userInfo = await User.findOne({ email: req.body.email });
+    const userInfo = await User.findOne({ email: req.body.email }).populate("album").populate("repetido");
     if (bcrypt.compareSync(req.body.password, userInfo.password)) {
       userInfo.password = null;
 

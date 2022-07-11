@@ -1,11 +1,14 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import Cromo from '../Cromo/Cromo';
-import "./CromoDetail.scss"
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import BorrarCromo from "../BorrarCromo/BorrarCromo";
+
+import "./CromoDetail.scss";
+
 const CromoDetail = () => {
   const { nombre } = useParams();
-
+  const { id } = useParams();
+  const [numero, setNumero] = useState();
   const [detalle, setDetalle] = useState();
 
   useEffect(() => {
@@ -19,38 +22,39 @@ const CromoDetail = () => {
     };
     getCromoByNombre();
   });
- 
+
+  useEffect(() => {
+    const getCromoByID = async () => {
+      const res = await axios.get(`http://localhost:8005/cromos/${id}`);
+      setNumero(res.data.cromo);
+    };
+    getCromoByID();
+  });
 
   return (
     <div>
       {detalle ? (
-         <div className='padre'>
+        <div className="padre">
+          {" "}
+          <div className="div1">
+            <h1>{detalle.nombre}</h1>
 
-          {' '}
-          <div className='div1'>
-          <h1>{detalle.nombre}</h1>
-          
-          <p>{detalle.nacionalidad}</p>
-          <p className='rol'>{detalle.rol}</p>
-          <p>{detalle.lenguaje}</p>
-         
-          <p>Rango: {detalle.status}</p>
-          <button className='backToAlbum'><Link to ="/album">VOLVER AL ALBUM</Link></button>
+            <p>{detalle.nacionalidad}</p>
+            <p className="rol">{detalle.rol}</p>
+            <p>{detalle.lenguaje}</p>
+
+            <p>Rango: {detalle.status}</p>
+            <button className="backToAlbum">
+              <Link to="/album">VOLVER AL ALBUM</Link>
+            </button>
           </div>
-
-        <div className='div2'>
-          <img src={detalle.imagenback} alt="imagenBack"></img>
-          <p className='frase'>{detalle.frase}</p>
+          <div className="div2">
+            <img src={detalle.imagenback} alt="imagenBack"></img>
+            <p className="frase">{detalle.frase}</p>
           </div>
-
-          
-
-
-
-
-          </div>
+          <BorrarCromo />
+        </div>
       ) : null}
-      
     </div>
   );
 };

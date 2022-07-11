@@ -84,14 +84,22 @@ const getCromoByID = async (req, res, next) => {
       patchCromo._id = id;
       const cromoData= await Cromo.findByIdAndUpdate(id,patchCromo)
 
-    //   patchMesa.autor =[...mesaData.autor, ...patchMesa.autor]
-
+    
       if (cromoData.imagen) {
         deleteFile(cromoData.imagen);
         }
 
-      if (req.file) {
-        patchCromo.imagen = req.file.path;
+      if (req.files.image) {
+        patchCromo.imagen = req.files.image[0].path;
+      }
+
+      
+      if (cromoData.imagenback) {
+        deleteFile(cromoData.imagenback);
+        }
+
+      if (req.files.imagenback) {
+        patchCromo.imagenback = req.files.imagenback[0].path;
       }
   
     const CromoDB = await Cromo.findByIdAndUpdate(id, patchCromo);
