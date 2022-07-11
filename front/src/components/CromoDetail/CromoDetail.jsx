@@ -3,7 +3,9 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import BotonBorrar from '../BotonBorrar/BotonBorrar';
-import Cromo from '../Cromo/Cromo';
+
+
+
 import "./CromoDetail.scss"
 
 const CromoDetail = () => {
@@ -55,7 +57,7 @@ const CromoDetail = () => {
             <img src={detalle.imagenback} alt="imagenBack"></img>
             <p className="frase">{detalle.frase}</p>
           </div>
-          <BorrarCromo />
+         
         </div>
       ) : null}
     </div>
