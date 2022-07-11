@@ -29,7 +29,7 @@ const Navigator = () => {
         <h3>CROMIFY</h3>
       </div>
 
-      <ul>
+      
         {jwt ? (
           <>
             {/* <li className="opcionmenu">
@@ -44,6 +44,9 @@ const Navigator = () => {
         <li className="opcionmenu">
           <Link to='/mercado'>MERCADO</Link>
         </li> */}
+
+
+          <ul>
 
             {isAdmin === true && (
               <>
@@ -76,15 +79,17 @@ const Navigator = () => {
               </>
             )}
 
-              
+            </ul>
+
+            <ButtonLogout />
            
           </>
         ) : null}
 
         
-      </ul>
+      
 
-      <ButtonLogout />
+     
     </div>
   );
 };

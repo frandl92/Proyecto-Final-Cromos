@@ -2,13 +2,9 @@
 
   display: flex;
   justify-content: space-around;
-  height: 5rem;
+  min-height: 10vh;
   align-items: center;
-  background: linear-gradient(
-    0deg,
-    rgba(48, 174, 138, 1) 0%,
-    rgba(6, 154, 148, 1) 57%
-  );
+  background: linear-gradient(0deg, rgb(48, 174, 138) 0%, rgb(6, 154, 148) 57%);
   color: white;
 
 
@@ -33,9 +29,11 @@
 
   ul{
     display: flex;
-flex-wrap: wrap;
-justify-content: center;
-align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 49%;
+    gap: 6%;
     .opcionmenu {
       transition: 0.5s;
       padding-bottom: 8px;
