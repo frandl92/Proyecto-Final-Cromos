@@ -9,12 +9,13 @@ import "./LoginComponent.scss";
 const LoginComponent = () => {
 
     const { register, handleSubmit } = useForm();
-    const {setAdmin, setJwt, user, setUser } = useContext(JwtContext);
+    const {setAdmin, setJwt, user, setUser, setAlbum } = useContext(JwtContext);
     const navigate = useNavigate ();
 
     
 
     const onSubmit = (formData) => {
+      console.log(formData)
       API.post("users/login", formData).then((res) => {
         console.log(res)
         localStorage.setItem("token", res.data.data.token);
@@ -22,6 +23,7 @@ const LoginComponent = () => {
         // localStorage.setItem("repes", res.data.data.user.repetido)
         setJwt(localStorage.getItem("token"));
         setUser(res.data.data.user)
+        setAlbum(res.data.data.user.album);
         navigate("/inicio");
         
         
