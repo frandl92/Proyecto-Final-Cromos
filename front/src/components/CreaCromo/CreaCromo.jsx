@@ -27,6 +27,8 @@ const CreaCromo = () => {
       }
     });
 
+    navigate("/album");
+
     Swal.fire({
       title: "Cromo Creado",
       icon: "success",

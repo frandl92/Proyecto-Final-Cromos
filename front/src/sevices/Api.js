@@ -1,10 +1,10 @@
 import axios from "axios";
 
 export const APIHeaders = {
-  Accept: "application/json",
+  "Accept": "application/json",
   "Content-Type": "application/json",
   "Access-Control-Allow-Origin": "*",
-  Authorization: {
+  "Authorization": {
     toString() {
       return `Bearer ${localStorage.getItem("token")}`;
     },

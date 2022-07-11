@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import BotonBorrar from '../BotonBorrar/BotonBorrar';
 import Cromo from '../Cromo/Cromo';
 import "./CromoDetail.scss"
 const CromoDetail = () => {
@@ -36,6 +37,7 @@ const CromoDetail = () => {
          
           <p>Rango: {detalle.status}</p>
           <button className='backToAlbum'><Link to ="/album">VOLVER AL ALBUM</Link></button>
+          <BotonBorrar cromoID={detalle._id}/>
           </div>
 
         <div className='div2'>

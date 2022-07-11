@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+
 import { API } from "../../sevices/Api";
 import "./RegisterComponent.scss";
 
@@ -8,6 +9,7 @@ import "./RegisterComponent.scss";
 const RegisterComponent = () => {
 
     const { register, handleSubmit } = useForm();
+   
 
     const navigate = useNavigate ();
 
@@ -52,6 +54,10 @@ const RegisterComponent = () => {
       <div>    
         <button type="submit" className="registrar">REGISTRARSE</button>
       </div>
+      
+     
+
+
     </form>
 
 

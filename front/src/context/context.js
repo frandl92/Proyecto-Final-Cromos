@@ -9,20 +9,21 @@ export const SWContextProvider = ({ children }) =>{
 
     const [cromos, setCromos] = useState([]);
     
+    const getCromos = async () => {
+      const cromosAPI = await fetch("http://localhost:8005/cromos");
+      const cromosJSON = await cromosAPI.json();
+      setCromos(cromosJSON.Cromo);
+      console.log(cromosJSON.Cromo)
+    };
     
     useEffect(() => {
-        const getCromos = async () => {
-          const cromosAPI = await fetch("http://localhost:8005/cromos");
-          const cromosJSON = await cromosAPI.json();
-          setCromos(cromosJSON.Cromo);
-          console.log(cromosJSON.Cromo)
-        };
+        
         getCromos();
         
       }, []);
 
       return (
-        <SWContext.Provider value={{ cromos }}>
+        <SWContext.Provider value={{ cromos, getCromos }}>
           {children}
         </SWContext.Provider>
       );
