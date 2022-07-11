@@ -7,8 +7,7 @@ const MercadoSchema = new Schema(
         user2Id: {type: String},
         cromo1Id: {type: String},
         cromo2Id: {type: String},
-        cambio: {type: String},
-        fecha: {type: Date}
+       
     },
     {timestamps: true}
 

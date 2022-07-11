@@ -1,53 +1,99 @@
-const Mercado = require("../models/mercado.models");
-
-const patchCromos = async (req, res, next) => {
-    try {
-      const { id } = req.params;
+const Mercado = require("../models/mercado.models")
+const { deleteFile } = require("../../middlewares/deleteFile");
+const httpStatusCode = require("../../utils/httpstatuscode");
   
-      const patchCromo = new Cromo(req.body);  
-      patchCromo._id = id;
-      const cromoData= await Cromo.findByIdAndUpdate(id,patchCromo)
+
+  const getAllMercado = async(req, res, next) => {
+
+    try {
+
+      const allMercado = await Mercado.find()
+
+      return res.json({
+
+        status: 200,
+        message: httpStatusCode[200],
+        Mercado: allMercado
+
+      })
+      
+    } catch (error) {
+      return next(error);
+      
+    }
+
+  };
+
+  const getMercadoID = async (req, res, next) => {
+
+
+    try {
+      const id = req.params.id;
+      const mercadoByID = await Mercado.findById(id)
+
+      return res.json({
+        status: 200,
+        message: httpStatusCode[200],
+        Mercado: mercadoByID,
+      });
+
+    } catch (error) {
+      return next(error);
+      
+    }
+
+  }
+
+  const deleteMercado = async(req, res, next) => {
+    try {
+      const { id} = req.params;
+
+      const mercadoBorrado = await Mercado.findByIdAndDelete(id);
+
+      return res.status(200).json(mercadoBorrado)
+      
+    } catch (error) {
+      return next(error);
+      
+    }
+  }
+
+  
 
  
 
-      if (cromoData.imagen) {
-        deleteFile(cromoData.imagen);
-        }
-
-      if (req.file) {
-        patchCromo.imagen = req.file.path;
-      }
-  
-      
-      return res.status(200).json({ nuevo: patchCromo, vieja: cromoData });
+  const createMercado = async (req, res, next) => {
+    try {
+      const newMercado = new Mercado(req.body);
+      const createdMercado = newMercado.save();
+      return res.json({
+        status: 201,
+        message: httpStatusCode[201],
+        createdMercado: newMercado,
+      });
     } catch (error) {
       return next(error);
     }
   };
 
-  const spliceCromos = async (req, res, next) => {
-    try {
-      const { id } = req.params;
-  
-      const spliceCromo = new Cromo(req.body);  
-      spliceCromo._id = id;
-      const cromoData= await Cromo.findByIdAndDelete(id,spliceCromo)
-
  
 
-      if (cromoData.imagen) {
-        deleteFile(cromoData.imagen);
-        }
-
-      if (req.file) {
-        patchCromo.imagen = req.file.path;
-      }
+  const patchMercado = async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const patchMercado = new Mercado(req.body);
+      patchMercado._id = id;
+      const mercadoData = await Mercado.findById(id);
   
       
-      return res.status(200).json({ nuevo: patchCromo, vieja: cromoData });
+      const mercadoDB = await Mercado.findByIdAndUpdate(id, patchMercado);
+      return res.status(200).json({ nuevo: patchMercado, vieja: mercadoData });
     } catch (error) {
       return next(error);
     }
   };
 
-  mmodule.exports = { patchCromos,spliceCromos}
+
+  
+
+  module.exports = { getAllMercado, getMercadoID, deleteMercado, createMercado, patchMercado}

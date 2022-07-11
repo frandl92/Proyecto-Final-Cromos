@@ -7,16 +7,27 @@ import './album.scss';
 import axios from 'axios';
 
 const Album = () => {
-  const { cromos } = useContext(SWContext);
+
+  const { cromos, getCromos } = useContext(SWContext);
+
   const [getCromo, setGetCromo] = useState();
   const { user } = useContext(JwtContext);
 
   console.log(user);
 
+
+  useEffect(()=> {
+    getCromos();
+  },[])
+
+  
+
   const [lete, setLete] = useState(true);
   const onClickk = () => {
     setLete(!lete);
   };
+
+
 
   return (
     <div className='mialbum'>
