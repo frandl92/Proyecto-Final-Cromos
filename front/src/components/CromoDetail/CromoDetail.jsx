@@ -54,12 +54,16 @@ const CromoDetail = () => {
           <p>Rango: {detalle.status}</p>
           <button className='backToAlbum'><Link to ="/album">VOLVER AL ALBUM</Link></button>
 
-          <div className="iconosAdmin">
+          {/* <div className="iconosAdmin">
             <BotonEditar cromoID={detalle._id}/>
             <BotonBorrar cromoID={detalle._id}/>
-          </div>
+          </div> */}
 
-          {isAdmin===true && (<BotonBorrar cromoID={detalle._id}/>)}
+          {isAdmin===true && (
+            <div className="iconosAdmin">
+            <BotonEditar cromoID={detalle._id}/>
+            <BotonBorrar cromoID={detalle._id}/>
+          </div>)}
 
           </div>
           <div className="div2">
