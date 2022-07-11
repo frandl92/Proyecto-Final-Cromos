@@ -119,20 +119,12 @@ const quitarCromo = async (req, res, next) => {
     deleteCromo = '"'+deleteCromo+'"'
     const find = usuarioData.repetido.indexOf(usuarioData.repetido.find(element => JSON.stringify(element) === deleteCromo))    
     
-    console.log("algo tenemos",deleteCromo);
-    
-    console.log("cuatro", find)
-    
     let repetidos = [...usuarioData.repetido]
     console.log(repetidos);
 
     const remp = usuarioData.repetido.splice(find,1)
 
-    console.log(usuarioData, "seis")
-    console.log("cinco",remp)
-   
-
-   
+      
     const usuarioDB = await User.findByIdAndUpdate(id, usuarioData);
 
     return res.status(200).json({ nuevo: usuarioDB, vieja: usuarioData });
@@ -154,6 +146,8 @@ const deleteUsuario = async (req, res, next) => {
   }
 };
 
+
+
 module.exports = {
   register,
   login,
@@ -161,5 +155,6 @@ module.exports = {
   patchUsuarios,
   getUsuarioID,
   deleteUsuario,
-  quitarCromo
+  quitarCromo,
+ 
 };
