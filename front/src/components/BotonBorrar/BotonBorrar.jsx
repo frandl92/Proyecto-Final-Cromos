@@ -27,10 +27,12 @@ const BotonBorrar = ({cromoID}) => {
     }
 
     
-
+  
   return (
     <div>
-        <button onClick={()=> deleteCromo(cromoID)} className="eliminar">ELIMINAR</button>
+        <button onClick={()=> deleteCromo(cromoID)} className="eliminar">
+        <img src='https://cdn-icons-png.flaticon.com/512/1345/1345925.png' alt='eliminar' className="basura"/>
+        </button>
     </div>
   )
 }

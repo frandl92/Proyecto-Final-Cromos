@@ -32,7 +32,7 @@
 
   & img {
     width: 18rem;
-    height: 20rem;
+    height: auto;
   }
 }
 .frase:before {
@@ -57,4 +57,10 @@
 .backToAlbum{
     margin-top: 5rem;
     color: black;
+}
+
+.iconosAdmin{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }

@@ -8,12 +8,9 @@ const Cromo = ({cromoImg, cromoNombre}) => {
   
   return (
     <div className='cromox'>
+        
         <img src={cromoImg} className="perfil" alt='foto'></img>
         <h2 className='nombre'>{cromoNombre}</h2>
-
-        
-    
-    
     
     </div>
   )
