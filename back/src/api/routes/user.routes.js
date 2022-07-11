@@ -6,10 +6,15 @@ const {  isRegistered, isAdmin } = require("../../middlewares/auth.middleware");
 
 router.post("/register", register);
 router.post("/login", login);
+
 router.get("/users", getAllUsuarios);
-router.patch("/:id", patchUsuarios);
 router.get("/:id", getUsuarioID);
+
 router.delete("/:id",  deleteUsuario);
-router.patch("/eliminar/:id", quitarCromo)
+
+router.patch("/:id", patchUsuarios);
+router.patch("/eliminar/:id", quitarCromo);
+
+
 
 module.exports = router;

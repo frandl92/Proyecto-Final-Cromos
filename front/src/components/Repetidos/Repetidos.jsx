@@ -1,21 +1,44 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { SWContext } from '../../context/context'
 import { JwtContext } from '../../context/jwtContext'
+import Cromo from '../Cromo/Cromo';
+import "./Repetidos.scss"
 
 const Repetidos = () => {
 
-    const {user} = useContext(JwtContext)
-    console.log(user.repetido);
+  const {cromos, getCromos} = useContext(SWContext);
+
+  const [repetido, setRepetido]= useState();
+
+  const {user} = useContext(JwtContext);
+
+  useEffect(()=>{
+    getCromos();
+  },[])
+
+  
+
 
   return (
 
     <>
-    <div>Repetidos</div>
-{/* 
-    <p>{user.repetido.map((repe) => {
 
-        <p>repe.</p>
+<h3> ESTOS SON TUS CROMOS REPETIDOS</h3>
 
-    })}</p> */}
+    <div className='divRepetidos'>
+
+    
+    {user.repetido.map((use) => (
+    <figure >
+      <Cromo cromoImg={use.imagen} cromoNombre={use.nombre}></Cromo>
+    </figure>
+   ))}
+
+
+    </div>
+
+  
+  
         
     </>
 

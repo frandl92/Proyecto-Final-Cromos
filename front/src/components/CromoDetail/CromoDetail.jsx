@@ -1,8 +1,9 @@
 
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import BotonBorrar from '../BotonBorrar/BotonBorrar';
+import { JwtContext } from '../../context/jwtContext';
 
 
 
@@ -13,6 +14,8 @@ const CromoDetail = () => {
   const { id } = useParams();
   const [numero, setNumero] = useState();
   const [detalle, setDetalle] = useState();
+
+  const {isAdmin}= useContext(JwtContext);
 
   useEffect(() => {
     const getCromoByNombre = async () => {
@@ -50,7 +53,10 @@ const CromoDetail = () => {
          
           <p>Rango: {detalle.status}</p>
           <button className='backToAlbum'><Link to ="/album">VOLVER AL ALBUM</Link></button>
-          <BotonBorrar cromoID={detalle._id}/>
+
+          {isAdmin===true && (<BotonBorrar cromoID={detalle._id}/>)}
+
+          
 
           </div>
           <div className="div2">

@@ -6,6 +6,7 @@ const logger = require("morgan");
 
 const cromoRouter = require("./src/api/routes/cromos.routes");
 const userRoute = require("./src/api/routes/user.routes");
+const mercadoRoute = require("./src/api/routes/mercado.routes");
 
 const {connect}= require("./src/utils/database")
 
@@ -46,6 +47,7 @@ server.set("secretKey", JWT_SECRET);
 
 server.use("/cromos", cromoRouter);
 server.use("/users", userRoute);
+server.use("/mercado", mercadoRoute);
 
 server.listen(PORT, () => {
     console.log(`Server listening on http://localhost:${PORT}`)
