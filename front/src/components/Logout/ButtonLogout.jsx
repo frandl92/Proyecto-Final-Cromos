@@ -16,7 +16,9 @@ const navigate = useNavigate();
 
   };
 
+
   return <img src='./assets/logout.png' alt="logout" onClick={logout} className="logout"/>;
+
 }
 
 export default ButtonLogout
