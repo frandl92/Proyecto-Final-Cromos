@@ -99,9 +99,9 @@ const patchUsuarios = async (req, res, next) => {
       patchUsuario.imagen = req.file.path;
     }
 
-    const usuarioDB = await User.findByIdAndUpdate(id, patchUsuario);
+    await User.findByIdAndUpdate(id, patchUsuario);
 
-    return res.status(200).json({ nuevo: usuarioDB, vieja: usuarioData });
+    return res.status(200).json({ nuevo: await patchUsuario.populate("album"), vieja: usuarioData });
   } catch (error) {
     return next(error);
   }

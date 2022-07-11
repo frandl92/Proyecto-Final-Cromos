@@ -24,6 +24,7 @@ import Crear from "./pages/Admin/Crear/Crear";
 function App() {
   const [isAdmin, setAdmin] = useState(false);
   const [jwt, setJwt] = useState();
+  const [album, setAlbum] = useState();
    const [user, setUser] = useState ([]);
    console.log(user);
 
@@ -31,7 +32,7 @@ function App() {
 
   return (
     <>
-      <JwtContext.Provider value={{ isAdmin, setAdmin, jwt, setJwt, user, setUser}}>
+      <JwtContext.Provider value={{ isAdmin, setAdmin, jwt, setJwt, user, setUser, album, setAlbum}}>
       <SWContextProvider >
         <Router>
           {/* {isAdmin===false ? <Inicio />: <Navigator/>} */}

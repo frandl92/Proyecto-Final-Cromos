@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { SWContext } from '../../context/context';
+import BotonAnadir from '../BotonAnadir/BotonAnadir';
 import Cromo from '../Cromo/Cromo';
 import './Aleatorio.scss';
 
@@ -37,7 +38,7 @@ const Aleatorio = () => {
     <div className='aleatorio'>
       <figure classname='figure'>
         <Cromo cromoImg={pinta.imagen} cromoNombre={pinta.nombre}></Cromo>
-        <button className='añadir'>AÑADIR</button>
+        <BotonAnadir cromoID={pinta._id}/>
       </figure>
       <figure classname='figure'>
         <Cromo cromoImg={pinta1.imagen} cromoNombre={pinta1.nombre}></Cromo>

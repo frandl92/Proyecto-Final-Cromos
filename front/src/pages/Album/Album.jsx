@@ -10,7 +10,7 @@ import axios from "axios";
 const Album = () => {
   const { cromos, getCromos } = useContext(SWContext);
   const [getCromo, setGetCromo] = useState();
-  const {user} = useContext(JwtContext)
+  const {user, album} = useContext(JwtContext)
 
   console.log(user);
 
@@ -33,7 +33,7 @@ const Album = () => {
     <>
     {/* <Cromo cromoImg={use.imagen} cromoNombre={use.nombre} /> */}
 
-      <div className="album">{user.album.map((use)=>(
+      <div className="album">{album.map((use)=>(
         <Link key={use._id} to={`${use.nombre}`}>
             <figure key={use._id}  onClick={()=> setGetCromo (use.imagen)} >
               <Cromo cromoImg= {use.imagen} cromoNombre = {use.nombre}></Cromo>
