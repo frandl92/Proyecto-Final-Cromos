@@ -10,10 +10,17 @@ ul {
   );
   color: white;
   .opcionmenu{
+    transition: 0.5s;
+    padding-bottom: 8px;
     a{
       color: white;
       font-size: 1.1rem;
+      transition: 1s;
+    }&:hover{
+      border-bottom: 2px solid lightsalmon;
+      
     }
+    
     }
   }
   .logo{

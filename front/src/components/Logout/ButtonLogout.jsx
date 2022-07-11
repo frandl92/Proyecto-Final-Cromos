@@ -16,7 +16,7 @@ const navigate = useNavigate();
 
   };
 
-  return <button className="Logout" onClick={logout}>Logout</button>
+  return <button className="Logout" onClick={logout}><img src='https://cdn-icons.flaticon.com/png/512/4032/premium/4032999.png?token=exp=1657474731~hmac=fc2f3aad7f77fa3e55e3966d5caf6907'  className='loguito'/></button>
 }
 
 export default ButtonLogout
