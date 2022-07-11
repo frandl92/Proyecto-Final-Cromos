@@ -3,8 +3,8 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import BotonBorrar from '../BotonBorrar/BotonBorrar';
+import BotonEditar from '../BotonEditar/BotonEditar';
 import { JwtContext } from '../../context/jwtContext';
-
 
 
 import "./CromoDetail.scss"
@@ -49,14 +49,17 @@ const CromoDetail = () => {
           
           <p>{detalle.nacionalidad}</p>
           <p className='rol'>{detalle.rol}</p>
-          <p>{detalle.lenguaje}</p>
+          <p>Lenguaje: {detalle.lenguaje}</p>
          
           <p>Rango: {detalle.status}</p>
           <button className='backToAlbum'><Link to ="/album">VOLVER AL ALBUM</Link></button>
 
-          {isAdmin===true && (<BotonBorrar cromoID={detalle._id}/>)}
+          <div className="iconosAdmin">
+            <BotonEditar cromoID={detalle._id}/>
+            <BotonBorrar cromoID={detalle._id}/>
+          </div>
 
-          
+          {isAdmin===true && (<BotonBorrar cromoID={detalle._id}/>)}
 
           </div>
           <div className="div2">
