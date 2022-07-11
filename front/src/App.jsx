@@ -25,7 +25,7 @@ function App() {
   const [isAdmin, setAdmin] = useState(false);
   const [jwt, setJwt] = useState();
    const [user, setUser] = useState ([]);
-   console.log(user);
+  
 
  
 

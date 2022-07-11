@@ -11,16 +11,14 @@ import ButtonLogout from '../components/Logout/ButtonLogout';
 const Navigator = () => {
   const { jwt, isAdmin, setAdmin} = useContext(JwtContext);
 
-  // const [admin, setAdmin] = useState([]);
+ 
 
 
   useEffect(() => {
     const getAllUsuarios = async () => {
      const res = await axios.get ("http://localhost:8005/users/");
      setAdmin(res.data.usuarios.rol)
-    //  if(admin===admin){
-
-    //  }
+    
      console.log(res);
     };
     getAllUsuarios();
