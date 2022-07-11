@@ -8,7 +8,7 @@ const Repetidos = () => {
 
     return (
         <>
-        
+        HOLA
 
         </>
     )

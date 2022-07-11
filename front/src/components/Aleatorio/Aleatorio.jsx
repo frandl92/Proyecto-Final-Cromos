@@ -1,7 +1,11 @@
+
 import React, { useContext, useEffect, useState } from 'react';
 import { SWContext } from '../../context/context';
+import Repetidos from '../../pages/Repetidos/Repetidos';
+import BotonAnadir from '../BotonAnadir/BotonAnadir';
 import Cromo from '../Cromo/Cromo';
 import './Aleatorio.scss';
+
 
 const Aleatorio = () => {
   const { cromos } = useContext(SWContext);
@@ -13,13 +17,14 @@ const Aleatorio = () => {
     return cromosDiarios;
   }
 
-  useEffect(() => { const interval = setInterval(() => {
-    setNum(randomNumberInRange(0, 22));
-  }, 4000); 
-  return () => { clearInterval(interval);
-  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setNum(randomNumberInRange(0, 22));
+    }, 4000);
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
-
 
   let cromosDiarios = Math.floor(Math.random() * (22 - 1) + 0);
 
@@ -34,10 +39,11 @@ const Aleatorio = () => {
   let pinta2 = cromos[cromosDiarios2];
 
   return (
+<>
     <div className='aleatorio'>
       <figure classname='figure'>
         <Cromo cromoImg={pinta.imagen} cromoNombre={pinta.nombre}></Cromo>
-        <button className='añadir'>AÑADIR</button>
+        <BotonAnadir cromoID={pinta._id}/>
       </figure>
       <figure classname='figure'>
         <Cromo cromoImg={pinta1.imagen} cromoNombre={pinta1.nombre}></Cromo>
@@ -48,6 +54,11 @@ const Aleatorio = () => {
         <button className='añadir'>AÑADIR</button>
       </figure>
     </div>
+
+
+      <Repetidos/>
+    </>
+
   );
 };
 

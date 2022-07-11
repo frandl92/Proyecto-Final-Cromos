@@ -9,13 +9,14 @@ import axios from 'axios';
 const Album = () => {
 
   const { cromos, getCromos } = useContext(SWContext);
-
   const [getCromo, setGetCromo] = useState();
-  const { user } = useContext(JwtContext);
-
-  console.log(user);
+  const {user, album} = useContext(JwtContext)
 
 
+  
+
+  
+  
   useEffect(()=> {
     getCromos();
   },[])
@@ -30,17 +31,18 @@ const Album = () => {
 
 
   return (
+
     <div className='mialbum'>
     <div className='arriba'>
-      <img src='https://cdn-icons-png.flaticon.com/512/1902/1902705.png'></img>
+      <img src='https://cdn-icons-png.flaticon.com/512/1902/1902705.png' alt='album'></img>
       <h1 className='titulo1'>Bienvenido {user.usuario}, este es tu album</h1>
-      <img src='https://cdn-icons-png.flaticon.com/512/1902/1902705.png'></img>
+      <img src='https://cdn-icons-png.flaticon.com/512/1902/1902705.png' alt='album'></img>
     </div>
-      <div className='album'>
-        {user.album.map((use) => (
-          <Link key={use._id} to={`${use.nombre}`}>
-            <figure key={use._id} onClick={() => setGetCromo(use.imagen)}>
-              <Cromo cromoImg={use.imagen} cromoNombre={use.nombre}></Cromo>
+      <div className="album">{album.map((use)=>(
+        <Link key={use._id} to={`${use.nombre}`}>
+            <figure key={use._id}  onClick={()=> setGetCromo (use.imagen)} >
+              <Cromo cromoImg= {use.imagen} cromoNombre = {use.nombre}></Cromo>
+
             </figure>
           </Link>
         ))}
@@ -72,6 +74,7 @@ const Album = () => {
       )}
     </div>
   );
-};
+}
+
 
 export default Album;
