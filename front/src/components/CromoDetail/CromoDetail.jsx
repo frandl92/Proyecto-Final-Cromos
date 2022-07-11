@@ -1,12 +1,15 @@
+
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import BotonBorrar from '../BotonBorrar/BotonBorrar';
 import Cromo from '../Cromo/Cromo';
 import "./CromoDetail.scss"
+
 const CromoDetail = () => {
   const { nombre } = useParams();
-
+  const { id } = useParams();
+  const [numero, setNumero] = useState();
   const [detalle, setDetalle] = useState();
 
   useEffect(() => {
@@ -20,11 +23,19 @@ const CromoDetail = () => {
     };
     getCromoByNombre();
   });
- 
+
+  useEffect(() => {
+    const getCromoByID = async () => {
+      const res = await axios.get(`http://localhost:8005/cromos/${id}`);
+      setNumero(res.data.cromo);
+    };
+    getCromoByID();
+  });
 
   return (
     <div>
       {detalle ? (
+
          <div className='padre'>
 
           {' '}
@@ -38,21 +49,15 @@ const CromoDetail = () => {
           <p>Rango: {detalle.status}</p>
           <button className='backToAlbum'><Link to ="/album">VOLVER AL ALBUM</Link></button>
           <BotonBorrar cromoID={detalle._id}/>
-          </div>
-
-        <div className='div2'>
-          <img src={detalle.imagenback} alt="imagenBack"></img>
-          <p className='frase'>{detalle.frase}</p>
-          </div>
-
-          
-
-
-
 
           </div>
+          <div className="div2">
+            <img src={detalle.imagenback} alt="imagenBack"></img>
+            <p className="frase">{detalle.frase}</p>
+          </div>
+          <BorrarCromo />
+        </div>
       ) : null}
-      
     </div>
   );
 };

@@ -5,47 +5,68 @@ import Cromo from "../../components/Cromo/Cromo";
 import { SWContext } from "../../context/context";
 import { JwtContext } from "../../context/jwtContext";
 import "./album.scss"
-
+import axios from "axios";
 
 const Album = () => {
   const { cromos, getCromos } = useContext(SWContext);
   const [getCromo, setGetCromo] = useState();
   const {user} = useContext(JwtContext)
+
   console.log(user);
+
 
   useEffect(()=> {
     getCromos();
   },[])
 
+  
+  const [lete, setLete] = useState(true);
+  const onClickk = () => {
+    setLete(!lete);
+
+    
+  };
+
+
+
   return (
     <>
-    
+    {/* <Cromo cromoImg={use.imagen} cromoNombre={use.nombre} /> */}
 
-      <p>{user.email}</p>
-    
-      <img className='nav' src={getCromo} alt='...'></img>
+      <div className="album">{user.album.map((use)=>(
+        <Link key={use._id} to={`${use.nombre}`}>
+            <figure key={use._id}  onClick={()=> setGetCromo (use.imagen)} >
+              <Cromo cromoImg= {use.imagen} cromoNombre = {use.nombre}></Cromo>
+                
+            </figure>
+            </Link>
+  
+      ))}
+      
+      </div>
+      
 
-      {cromos.length ? (
+     <button onClick={onClickk}  >aquiiiii</button>
+
+
+      {!lete && (
         <div className='album'>
           {cromos.map((cromo) => (
 
-            <Link key={cromo._id} to={`${cromo.nombre}`}>
-            <figure key={cromo._id}   onClick={()=> setGetCromo (cromo.imagen)} >
+           
+            <figure key={cromo._id}   className="opaco" onClick={()=> setGetCromo (cromo.imagen)} >
               <Cromo cromoImg= {cromo.imagen} cromoNombre = {cromo.nombre}></Cromo>
 
             </figure>
-            </Link>
+            
 
           ))}
         </div>
-      ) : (
-        <h3>Loading</h3>
-      )}
+      ) 
+      }
     </>
   );
 };
-// {user.album.includes(cromo._id) ? className="cromo" : className= "opaco" } 
-// className="cromo"
-// {user.album.includes(cromo._id) ? className="cromo" : className= "opaco"} 
+ 
 
 export default Album;

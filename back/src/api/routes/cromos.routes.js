@@ -12,6 +12,10 @@ router.get("/id/:id", getCromoByID);
 router.get("/nombre/:nombre", getCromoByNombre);
 router.post("/", [isAdmin], upload.single("imagen"),  createCromos);
 router.delete('/:id', [isAdmin], deleteCromos);
-router.patch('/:id', upload.single("imagen"), patchCromos)
+router.patch('/:id', upload.fields(
+    [
+        {name: "imagen", maxCount:1},
+        {name: "imagenback", maxCount:1}
+    ]), patchCromos);
 
 module.exports = router;
