@@ -34,9 +34,9 @@ const Album = () => {
 
   ////////----------------buscador-------------------------////////////////////
 
-  const filterCromos = cromos.filter((cromo) =>
-    cromo.nombre.toLowerCase().includes(nombre.toLowerCase())
-  );
+  // const filterCromos = cromos.filter((cromo) =>
+  //   cromo.nombre.toLowerCase().includes(nombre.toLowerCase())
+  // );
 
   return (
     <div className="mialbum">
@@ -53,8 +53,8 @@ const Album = () => {
       </div>
 
       {/* --------BUSCADOR---------- */}
-{/* 
-      <div >
+
+      {/* <div >
         <label htmlFor="buscador"> Busca un cromo de la coleccion </label>
         <input
           type="text"
@@ -62,8 +62,8 @@ const Album = () => {
           
           onChange={(evento) => buscar(evento)}
         />
-      </div> */}
-{/* 
+      </div>
+
       <div className="filtrado">
         {filterCromos.map((filtrado) => (
           <figure >
