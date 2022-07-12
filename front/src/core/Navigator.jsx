@@ -29,7 +29,6 @@ const Navigator = () => {
   return (
     <>
    
-    <div className="visible">
       <ul>
 
         <li className="logo">
@@ -69,11 +68,8 @@ const Navigator = () => {
 
       </ul>
 
-    </div>
+ 
     
-<div className="oculto">
-        <Hamburguesa/ >
-</div>
     </>
   );
 };
