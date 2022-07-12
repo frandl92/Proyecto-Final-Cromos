@@ -42,10 +42,11 @@ const CreaCromo = () => {
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="login"
-          id="creacromo"
-        >
+          id="creacromo">
+          
           <div className="agrupa">
-            <div className="campo">
+            <div className="campo, opciones">
+            <div className="campito">
               <label htmlFor="nombre">Nombre</label>
               <input
                 type="text"
@@ -53,8 +54,7 @@ const CreaCromo = () => {
                 {...register("nombre", { required: true })}
               />
             </div>
-
-            <div className="campo">
+            <div className="campitoposicion">
               <label htmlFor="posicion">Posicion</label>
               <input
                 type="number"
@@ -62,25 +62,20 @@ const CreaCromo = () => {
                 {...register("posicion", { required: true })}
               />
             </div>
-
-            <div className="campo">
+            <div className="campito">
               <label htmlFor="nacionalidad">Nacionalidad</label>
               <input
                 type="text"
                 id="nacionalidad"
-                {...register("nacionalidad", { required: true })}
-              />
+                {...register("nacionalidad", { required: true })}/>
             </div>
-          </div>
-
-          <div className="agrupa">
+            </div>
             <div className="campo">
               <label htmlFor="imagen">Imagen</label>
               <input
                 type="text"
                 id="imagen"
-                {...register("imagen", { required: true })}
-              />
+                {...register("imagen", { required: true })}/>
             </div>
 
             <div className="campo">
@@ -88,20 +83,16 @@ const CreaCromo = () => {
               <input
                 type="text"
                 id="imagen"
-                {...register("imagenback", { required: true })}
-              />
+                {...register("imagenback", { required: true })}/>
             </div>
-          </div>
 
-          <div className="agrupa">
-            <div className="campo">
+            <div className="campo, opciones">
+              <div>
               <label htmlFor="lenguaje">Lenguaje</label>
-
               <select
                 name="lenguaje"
                 id="lenguaje"
-                {...register("lenguaje", { required: true })}
-              >
+                {...register("lenguaje", { required: true })}>
                 <option value="React">react</option>
                 <option value="Angular">Angular</option>
                 <option value="Node">Node</option>
@@ -110,19 +101,10 @@ const CreaCromo = () => {
                 <option value="MySQL">MySQL</option>
                 <option value="PHP">PHP</option>
               </select>
-            </div>
-            <div className="campo">
-              <label htmlFor="frase">Frase</label>
-              <input
-                type="text"
-                id="frase"
-                {...register("frase", { required: true })}
-              />
-            </div>
+              </div>
 
-            <div className="campo">
+              <div>
               <label htmlFor="status">Status</label>
-
               <select
                 name="status"
                 id="status"
@@ -132,8 +114,18 @@ const CreaCromo = () => {
                 <option value="plata">Plata</option>
                 <option value="Bronce">Bronce</option>
               </select>
+              </div>
             </div>
           </div>
+
+          <div className="campo">
+              <label htmlFor="frase">Frase</label>
+              <input
+                type="text"
+                id="frase"
+                {...register("frase", { required: true })}
+              />
+            </div>
 
           <div>
             <button type="submit" className="linkregistro" >

@@ -4,8 +4,9 @@ import Cromo from '../../components/Cromo/Cromo';
 import { SWContext } from '../../context/context';
 import { JwtContext } from '../../context/jwtContext';
 import { API } from '../../sevices/Api';
+import "./Repetidos.jsx";
 
-import Popup from 'reactjs-popup';
+
 
 const Repetidos = () => {
   const { repe, user, setUser, setRepe } = useContext(JwtContext);
@@ -48,19 +49,25 @@ const Repetidos = () => {
   console.log(repe);
   return (
     <>
-      <div className='album'>
+      <div className='album' id="repetido">
         {repe.map((use) => (
-          <figure key={use._id}>
+          <figure key={use._id} className="vertical">
             <Cromo cromoImg={use.imagen} cromoNombre={use.nombre}></Cromo>
+
+            <div className='lateral'>
+
+            <button onClick={() => sendMercado1(use._id)} className="linkregistro">
+              CAMBIAR POR...{' '}
+            </button>
+
             <select name='permuta' id='permuta'>
               {cromos.map((cromo) => (
                 <option> {cromo.nombre} </option>
               ))}
             </select>
+            </div>
 
-            <button onClick={() => sendMercado1(use._id)}>
-              CAMBIAR POR...{' '}
-            </button>
+            
           </figure>
         ))}
       </div>
