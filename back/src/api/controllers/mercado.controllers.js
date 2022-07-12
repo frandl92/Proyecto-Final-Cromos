@@ -7,7 +7,7 @@ const httpStatusCode = require("../../utils/httpstatuscode");
 
     try {
 
-      const allMercado = await Mercado.find()
+      const allMercado = await Mercado.find().populate("user1Id").populate("user2Id").pupulate("crommo1Id").populate("cromo2Id")
 
       return res.json({
 
@@ -29,7 +29,7 @@ const httpStatusCode = require("../../utils/httpstatuscode");
 
     try {
       const id = req.params.id;
-      const mercadoByID = await Mercado.findById(id)
+      const mercadoByID = await Mercado.findById(id).populate("user1Id").populate("user2Id").pupulate("crommo1Id").populate("cromo2Id")
 
       return res.json({
         status: 200,
