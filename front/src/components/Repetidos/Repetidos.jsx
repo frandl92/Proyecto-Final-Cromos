@@ -6,18 +6,13 @@ import "./Repetidos.scss"
 
 const Repetidos = () => {
 
-  const {cromos, getCromos} = useContext(SWContext);
+  const {getCromos} = useContext(SWContext);
 
-  const [repetido, setRepetido]= useState();
-
-  const {user} = useContext(JwtContext);
+  const {repe} = useContext(JwtContext);
 
   useEffect(()=>{
     getCromos();
   },[])
-
-  
-
 
   return (
 
@@ -28,7 +23,7 @@ const Repetidos = () => {
     <div className='divRepetidos'>
 
     
-    {user.repetido.map((use) => (
+    {repe.map((use) => (
     <figure >
       <Cromo cromoImg={use.imagen} cromoNombre={use.nombre}></Cromo>
     </figure>

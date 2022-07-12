@@ -24,7 +24,7 @@ const Navigator = () => {
      console.log(res);
     };
     getAllUsuarios();
-  })
+  }, [])
 
   return (
     <div>

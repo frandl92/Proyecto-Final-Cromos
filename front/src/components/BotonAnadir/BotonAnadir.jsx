@@ -7,32 +7,61 @@ import { SWContext } from '../../context/context';
 
 const BotonAnadir = ({ cromoID }) => {
   const navigate = useNavigate();
-  const { user , setAlbum} = useContext(JwtContext);
-  const { getCromos } = useContext(SWContext)
+  const { user, setAlbum, setRepe, album, setUser } = useContext(JwtContext);
+  const { getCromos, getUser } = useContext(SWContext);
 
-  const formData = { album: cromoID };
-  console.log(formData);
+  // const formData = {for (const iterator of user.album) { if (iterator._id === cromoID) {
+  //   setAlbum({album: })
+  // } }}
 
-  const botonAnadir = () => {
-    API.patch('users/' + user._id, formData).then((res) => {
-      console.log(res.data);
+  let prueba;
+
+  const decidir = () => {
+    if (user.album.length > 0) {
+      for (const cromo of user.album) {
+        if (cromo._id === cromoID) {
+          prueba = { repetido: cromoID };
+          break;
+        } else {
+          prueba = { album: cromoID };
+        }
+      }
+    } else {
+      prueba = { album: cromoID };
+    }
+
+    botonAnadir(prueba);
+  };
+
+  const botonAnadir = (prueba) => {
+    API.patch('users/' + user._id, prueba).then((res) => {
+      setUser(res.data.nuevo);
       setAlbum(res.data.nuevo.album);
-      navigate("/album");
-
-      Swal.fire({
-        title: 'Cromo Añadido a tu Album',
-        icon: 'success',
-        confirmButtonText: 'Cool',
-      });
+      setRepe(res.data.nuevo.repetido);
+      console.log(prueba.repetido);
+      if (prueba.repetido) {
+        Swal.fire({
+          title: 'Cromo Añadido a tus Cromos repetidos',
+          icon: 'success',
+          confirmButtonText: 'Cool',
+        });
+      } else {
+        navigate('/album');
+        Swal.fire({
+          title: 'Cromo Añadido a tu Album',
+          icon: 'success',
+          confirmButtonText: 'Cool',
+        });
+      }
     });
   };
 
-  useEffect(()=> {
+  useEffect(() => {
     getCromos();
-  },[])
+  }, []);
 
   return (
-    <button onClick={() => botonAnadir()} className='anadir'>
+    <button onClick={() => decidir()} className='anadir'>
       AÑADIR
     </button>
   );
