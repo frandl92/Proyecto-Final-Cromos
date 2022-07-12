@@ -51,6 +51,12 @@ const Mercado = () => {
                 cromoNombre={mer.cromo1Id.nombre}
               />
             </div>
+
+            {/* <img src="./assets/flecha.gif" alt="flecha"/> */}
+            <img src="./assets/flecha2.gif" alt="flecha"/>
+
+
+
             <div className="cartaquiero">
               <h2>por </h2>
 
