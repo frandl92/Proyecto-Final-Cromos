@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Cromo from "../../components/Cromo/Cromo";
+import PopUp from "../../components/PopUp/PopUp";
 import { SWContext } from "../../context/context";
 import { JwtContext } from "../../context/jwtContext";
 import "./album.scss";
@@ -61,7 +62,9 @@ const Album = () => {
         {user.album.map((use) => (
           <Link key={use._id} to={`${use.nombre}`}>
             <figure key={use._id} onClick={() => setGetCromo(use.imagen)}>
-              <Cromo cromoImg={use.imagen} cromoNombre={use.nombre}></Cromo>
+
+            <Cromo cromoImg={use.imagen} cromoNombre={use.nombre}></Cromo>
+              
 
             </figure>
           </Link>
