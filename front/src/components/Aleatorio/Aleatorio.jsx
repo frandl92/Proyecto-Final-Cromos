@@ -20,7 +20,7 @@ const Aleatorio = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setNum(randomNumberInRange(0, 22));
-    }, 100);
+    }, 4000);
     return () => {
       clearInterval(interval);
     };
