@@ -1,26 +1,46 @@
-import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
-import Cromo from "../../components/Cromo/Cromo";
-import { SWContext } from "../../context/context";
-import { JwtContext } from "../../context/jwtContext";
+import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import Cromo from '../../components/Cromo/Cromo';
+import { SWContext } from '../../context/context';
+import { JwtContext } from '../../context/jwtContext';
+import {API} from "../../sevices/Api"
 
 const Repetidos = () => {
-    const { repe , album} = useContext(JwtContext)
+  const { repe, user, setUser, setRepe } = useContext(JwtContext);
+  
 
-console.log(repe);
-    return (
-        <>
-         <div className="album">{repe.map((use)=>(
-        <Link key={use._id} to={`${use.nombre}`}>
-            <figure key={use._id}   >
-              <Cromo cromoImg= {use.imagen} cromoNombre = {use.nombre}></Cromo>
 
-            </figure>
-          </Link>
+  
+    
+
+
+      const sendMercado1 = (id) =>{
+        let inso = { deleteCromo : id}
+        API.patch("users/eliminar/" + user._id, inso).then((res)=>{
+            console.log("probando patch" , res.data.nuevo.repetido)
+            setUser(res.data.nuevo);
+            setRepe(res.data.nuevo.repetido);
+            
+
+        });
+        
+    }
+
+
+  console.log(repe);
+  return (
+    <>
+      <div className='album'>
+        {repe.map((use) => (
+          <figure key={use._id}>
+            <Cromo cromoImg={use.imagen} cromoNombre={use.nombre}></Cromo>
+            <button onClick={() => sendMercado1(use._id)}>ENVIAR A MERCADO</button>
+
+          </figure>
         ))}
       </div>
-
-        </>
-    )
+    </>
+  );
 };
+
 export default Repetidos;

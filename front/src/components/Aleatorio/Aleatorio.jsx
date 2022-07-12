@@ -19,8 +19,10 @@ const Aleatorio = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
+
       setNum(randomNumberInRange(0, cromos.length));
     }, 100);
+
     return () => {
       clearInterval(interval);
     };
