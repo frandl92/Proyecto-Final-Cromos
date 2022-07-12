@@ -32,6 +32,7 @@ const LoginComponent = () => {
         
         if (res.data.data.user.rol === "admin") {
           setAdmin(true)
+          navigate("album")
           
         }else{
           setAdmin(false)
