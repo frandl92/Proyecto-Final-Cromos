@@ -1,28 +1,29 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Navigator.scss";
 import { JwtContext } from "../context/jwtContext";
 import axios from "axios";
 
 import ButtonLogout from "../components/Logout/ButtonLogout";
+import { SWContext } from "../context/context";
 
 const Navigator = () => {
-  const { jwt, isAdmin, setAdmin } = useContext(JwtContext);
+  const { jwt, isAdmin, setAdmin, user} = useContext(JwtContext);
+  
+  
 
- 
+  const comprobarUsuario = async () => {
+   const usuario = localStorage.getItem("user")
+   console.log(usuario);
+    setAdmin(usuario)
+   };
 
   useEffect(() => {
-    const getAllUsuarios = async () => {
-
-     const res = await axios.get ("http://localhost:8005/users/");
-     setAdmin(res.data.usuarios.rol)
     
-     console.log(res);
-
-    };
-    getAllUsuarios();
+    comprobarUsuario();
   }, [])
 
+  
 
   return (
 
@@ -33,25 +34,12 @@ const Navigator = () => {
       </div>
 
       
-        {jwt ? (
+       
           <>
-            {/* <li className="opcionmenu">
-          <Link to='/inicio'>INICIO</Link>
-        </li>
-        <li className="opcionmenu">
-          <Link to='/cromo'>CROMOS</Link>
-        </li>
-        <li className="opcionmenu">
-          <Link to='/album'>ALBUM</Link>
-        </li>
-        <li className="opcionmenu">
-          <Link to='/mercado'>MERCADO</Link>
-        </li> */}
-
-
+        
           <ul>
 
-            {isAdmin === true && (
+            {isAdmin === '"admin"' && (
               <>
                 <li className="opcionmenu">
                   <Link to="/album">ÁLBUM</Link>
@@ -65,9 +53,9 @@ const Navigator = () => {
               </>
             )}
 
-            {isAdmin === false && (
+            {isAdmin === '"user"' && (
               <>
-                <li className="opcionmenu">
+               <li className="opcionmenu">
                   <Link to="/inicio">INICIO</Link>
                 </li>
                 <li className="opcionmenu">
@@ -80,14 +68,14 @@ const Navigator = () => {
                   <Link to="/mercado">MERCADO</Link>
                 </li>
               </>
-            )}
+        )}
 
             </ul>
 
             <ButtonLogout />
            
           </>
-        ) : null}
+       
 
         
       
@@ -98,3 +86,5 @@ const Navigator = () => {
 };
 
 export default Navigator;
+
+

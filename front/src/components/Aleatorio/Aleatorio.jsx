@@ -12,13 +12,15 @@ const Aleatorio = () => {
 
   const [num, setNum] = useState(0);
 
-  function randomNumberInRange(min, max) {
-    let cromosDiarios = Math.floor(Math.random() * (cromos.length - 1) + 0);
-    return cromosDiarios;
-  }
+  
 
   useEffect(() => {
     const interval = setInterval(() => {
+
+      function randomNumberInRange(min, max) {
+        let cromosDiarios = Math.floor(Math.random() * (cromos.length - 1) + 0);
+        return cromosDiarios;
+      }
 
       setNum(randomNumberInRange(0, cromos.length));
     }, 100000);
@@ -31,6 +33,7 @@ const Aleatorio = () => {
   let cromosDiarios = Math.floor(Math.random() * (cromos.length - 1) + 0);
 
   let pinta = cromos[cromosDiarios];
+  console.log("esto es mi", pinta)
 
   
 

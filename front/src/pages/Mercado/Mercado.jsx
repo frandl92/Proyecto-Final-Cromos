@@ -1,9 +1,11 @@
+
 import React, { useState, useEffect, useContext } from "react";
 import "./Mercado.scss";
 import Cromo from "../../components/Cromo/Cromo";
 import PopUp from "../../components/PopUp/PopUp";
 import { JwtContext } from "../../context/jwtContext";
 import { API } from "../../sevices/Api";
+
 import Swal from "sweetalert2";
 
 const Mercado = () => {
@@ -82,8 +84,10 @@ const Mercado = () => {
 
               <img src="./assets/flecha2.gif" alt="flecha" />
 
+
               <div className="cartaquiero">
                 <h2>por </h2>
+
 
                 <Cromo
                   cromoImg={mer.wanted.imagen}
@@ -119,3 +123,7 @@ const Mercado = () => {
 };
 
 export default Mercado;
+
+
+ 
+// {user.album.includes(mer.cromo1Id) ? <button onClick={()=> onClickk(mer.cromo1Id._id, mer.user1Id._id, mer.wanted._id, mer._id)}> ACEPTAR CAMBIO</button> : null }

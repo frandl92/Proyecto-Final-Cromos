@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import {JwtContext} from "../../context/jwtContext";
 import {useForm } from "react-hook-form";
 import { API } from "../../sevices/Api";
@@ -9,20 +9,25 @@ import "./LoginComponent.scss";
 const LoginComponent = () => {
 
     const { register, handleSubmit } = useForm();
-    const {setAdmin, setJwt, user, setUser, setAlbum } = useContext(JwtContext);
+    const {setAdmin, setJwt, setUser, setAlbum } = useContext(JwtContext);
+    
     const navigate = useNavigate ();
 
     
 
     const onSubmit = (formData) => {
-      console.log(formData)
+      
       API.post("users/login", formData).then((res) => {
-        console.log(res)
+        
         localStorage.setItem("token", res.data.data.token);
-        localStorage.setItem("user", JSON.stringify(res.data.data.user));
+        localStorage.setItem("user", JSON.stringify(res.data.data.user.rol));
+        console.log(res.data.data.user);
+       
         // localStorage.setItem("repes", res.data.data.user.repetido)
         setJwt(localStorage.getItem("token"));
+        
         setUser(res.data.data.user)
+       
         setAlbum(res.data.data.user.album);
         navigate("/inicio");
         
@@ -32,7 +37,7 @@ const LoginComponent = () => {
         
         if (res.data.data.user.rol === "admin") {
           setAdmin(true)
-          navigate("album")
+          navigate("/editar")
           
         }else{
           setAdmin(false)
