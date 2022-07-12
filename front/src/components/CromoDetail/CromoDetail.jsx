@@ -38,7 +38,9 @@ const CromoDetail = () => {
   });
 
   return (
-    <div>
+
+    <>
+    
       {detalle ? (
 
          <div className='padre'>
@@ -47,7 +49,7 @@ const CromoDetail = () => {
           <div className='div1'>
           <h1>{detalle.nombre}</h1>
           
-          <p>{detalle.nacionalidad}</p>
+         
           <p className='rol'>{detalle.rol}</p>
           <p>Lenguaje: {detalle.lenguaje}</p>
          
@@ -73,7 +75,7 @@ const CromoDetail = () => {
          
         </div>
       ) : null}
-    </div>
+      </>
   );
 };
 
