@@ -13,7 +13,7 @@ const Editar = () => {
     <div className="mialbum">
     <div className="arriba">
       <img src='https://cdn-icons-png.flaticon.com/512/1902/1902705.png' alt='album'></img>
-      <h1 className='tituloEditar'>Para editar o borrar un cromo, clica sobre él</h1>
+      <h1 className='tituloEditar'>Clica para más opciones</h1>
       <img src='https://cdn-icons-png.flaticon.com/512/1902/1902705.png' alt='album'></img>
     </div>
     <div className="album">{cromos.map((cromo) => (
