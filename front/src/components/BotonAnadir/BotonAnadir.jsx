@@ -61,7 +61,7 @@ const BotonAnadir = ({ cromoID }) => {
   }, []);
 
   return (
-    <button onClick={() => decidir()} className='anadir'>
+    <button onClick={() => decidir()} className="añadir">
       AÑADIR
     </button>
   );
