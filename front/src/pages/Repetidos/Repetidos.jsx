@@ -16,6 +16,7 @@ const Repetidos = () => {
 
       const sendMercado1 = (id) =>{
         let inso = { deleteCromo : id}
+        let enviarCromo = {user1Id: user._id, cromo1Id: id}
         API.patch("users/eliminar/" + user._id, inso).then((res)=>{
             console.log("probando patch" , res.data.nuevo.repetido)
             setUser(res.data.nuevo);
@@ -23,9 +24,8 @@ const Repetidos = () => {
             
 
         });
-        
+        API.post("/mercado/", enviarCromo)
     }
-
 
   console.log(repe);
   return (
