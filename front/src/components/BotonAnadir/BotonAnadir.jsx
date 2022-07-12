@@ -1,9 +1,9 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { API } from '../../sevices/Api';
-import { useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import { JwtContext } from '../../context/jwtContext';
-import { SWContext } from '../../context/context';
+import React, { useContext, useState, useEffect } from "react";
+import { API } from "../../sevices/Api";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { JwtContext } from "../../context/jwtContext";
+import { SWContext } from "../../context/context";
 
 const BotonAnadir = ({ cromoID }) => {
   const navigate = useNavigate();
@@ -34,23 +34,23 @@ const BotonAnadir = ({ cromoID }) => {
   };
 
   const botonAnadir = (prueba) => {
-    API.patch('users/' + user._id, prueba).then((res) => {
+    API.patch("users/" + user._id, prueba).then((res) => {
       setUser(res.data.nuevo);
       setAlbum(res.data.nuevo.album);
       setRepe(res.data.nuevo.repetido);
       console.log(prueba.repetido);
       if (prueba.repetido) {
         Swal.fire({
-          title: 'Cromo Añadido a tus Cromos repetidos',
-          icon: 'success',
-          confirmButtonText: 'Cool',
+          title: "Cromo Añadido a tus Cromos repetidos",
+          icon: "success",
+          confirmButtonText: "Cool",
         });
       } else {
-        navigate('/album');
+        navigate("/album");
         Swal.fire({
-          title: 'Cromo Añadido a tu Album',
-          icon: 'success',
-          confirmButtonText: 'Cool',
+          title: "Cromo Añadido a tu Album",
+          icon: "success",
+          confirmButtonText: "Cool",
         });
       }
     });
@@ -60,10 +60,26 @@ const BotonAnadir = ({ cromoID }) => {
     getCromos();
   }, []);
 
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setVisible(true);
+    }, 3000);
+  });
+
+  const [disable, setDisable] = useState(false);
+
   return (
-    <button onClick={() => decidir()} className="añadir">
-      AÑADIR
-    </button>
+    <>
+      
+
+      <button disabled={true}  onClick={() =>  setDisable(true)} className="añadir">
+        AÑADIR
+      </button>
+
+      
+    </>
   );
 };
 
