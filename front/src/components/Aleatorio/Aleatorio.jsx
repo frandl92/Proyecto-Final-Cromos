@@ -13,46 +13,34 @@ const Aleatorio = () => {
   const [num, setNum] = useState(0);
 
   function randomNumberInRange(min, max) {
-    let cromosDiarios = Math.floor(Math.random() * (22 - 1) + 0);
+    let cromosDiarios = Math.floor(Math.random() * (cromos.length - 1) + 0);
     return cromosDiarios;
   }
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setNum(randomNumberInRange(0, 22));
-    }, 4000);
+
+      setNum(randomNumberInRange(0, cromos.length));
+    }, 100);
+
     return () => {
       clearInterval(interval);
     };
   }, []);
 
-  let cromosDiarios = Math.floor(Math.random() * (22 - 1) + 0);
+  let cromosDiarios = Math.floor(Math.random() * (cromos.length - 1) + 0);
 
   let pinta = cromos[cromosDiarios];
 
-  let cromosDiarios1 = Math.floor(Math.random() * (22 - 1) + 0);
-
-  let pinta1 = cromos[cromosDiarios1];
-
-  let cromosDiarios2 = Math.floor(Math.random() * (22 - 1) + 0);
-
-  let pinta2 = cromos[cromosDiarios2];
 
   return (
 <>
     <div className='aleatorio'>
-      <figure classname='figure'>
+      <figure classname="prueba">
         <Cromo cromoImg={pinta.imagen} cromoNombre={pinta.nombre}></Cromo>
-        <BotonAnadir cromoID={pinta._id}/>
+        <BotonAnadir cromoID={pinta._id} />
       </figure>
-      <figure classname='figure'>
-        <Cromo cromoImg={pinta1.imagen} cromoNombre={pinta1.nombre}></Cromo>
-        <button className='añadir'>AÑADIR</button>
-      </figure>
-      <figure classname='figure'>
-        <Cromo cromoImg={pinta2.imagen} cromoNombre={pinta2.nombre}></Cromo>
-        <button className='añadir'>AÑADIR</button>
-      </figure>
+    
     </div>
       <Repetidos/>
     </>
