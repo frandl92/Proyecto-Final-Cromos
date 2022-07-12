@@ -24,14 +24,18 @@ import Crear from "./pages/Admin/Crear/Crear";
 function App() {
   const [isAdmin, setAdmin] = useState(false);
   const [jwt, setJwt] = useState();
+  const [album, setAlbum] = useState();
    const [user, setUser] = useState ([]);
-  
+
+  const [repe, setRepe] = useState([]);
+   //console.log(user);
+
 
  
 
   return (
     <>
-      <JwtContext.Provider value={{ isAdmin, setAdmin, jwt, setJwt, user, setUser}}>
+      <JwtContext.Provider value={{ isAdmin, setAdmin, jwt, setJwt, user, setUser,repe, setRepe, album, setAlbum}}>
       <SWContextProvider >
         <Router>
           {/* {isAdmin===false ? <Inicio />: <Navigator/>} */}
@@ -52,6 +56,7 @@ function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/repetidos" element={<Repetidos />} />
               <Route path="/editar" element={<Editar />} />
+              <Route path="/editar/:nombre" element={<CromoDetail />} />
               <Route path="/crear" element={<Crear />} />
 
             </Routes>

@@ -83,7 +83,7 @@ const patchUsuarios = async (req, res, next) => {
 
     const patchUsuario = new User(req.body);
     patchUsuario._id = id;
-    const usuarioData = await User.findByIdAndUpdate(id, patchUsuario)
+    const usuarioData = await User.findById(id)
       .populate("album")
       .populate("repetido");
 
@@ -99,9 +99,12 @@ const patchUsuarios = async (req, res, next) => {
       patchUsuario.imagen = req.file.path;
     }
 
-    const usuarioDB = await User.findByIdAndUpdate(id, patchUsuario);
+    const prueba = await User.findByIdAndUpdate(id, patchUsuario);
 
-    return res.status(200).json({ nuevo: usuarioDB, vieja: usuarioData });
+    console.log("prueba", prueba);
+    console.log(patchUsuario);
+
+    return res.status(200).json({ nuevo: await (await patchUsuario.populate("album")).populate("repetido"), vieja: usuarioData });
   } catch (error) {
     return next(error);
   }

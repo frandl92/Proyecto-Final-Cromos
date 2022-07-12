@@ -1,10 +1,15 @@
-import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import BotonBorrar from "../BotonBorrar/BotonBorrar";
-import { JwtContext } from "../../context/jwtContext";
 
-import "./CromoDetail.scss";
+
+import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import BotonBorrar from '../BotonBorrar/BotonBorrar';
+import BotonEditar from '../BotonEditar/BotonEditar';
+import { JwtContext } from '../../context/jwtContext';
+
+
+import "./CromoDetail.scss"
+
 
 const CromoDetail = () => {
   const { nombre } = useParams();
@@ -36,7 +41,9 @@ const CromoDetail = () => {
   },[]);
 
   return (
-    <div>
+
+    <>
+    
       {detalle ? (
         <div className="padre">
           {" "}
@@ -52,6 +59,7 @@ const CromoDetail = () => {
               <Link to="/album">VOLVER AL ALBUM</Link>
             </button>
 
+
             {isAdmin === true && <BotonBorrar cromoID={detalle._id} />}
           </div>
           <div className="div2">
@@ -60,7 +68,7 @@ const CromoDetail = () => {
           </div>
         </div>
       ) : null}
-    </div>
+      </>
   );
 };
 

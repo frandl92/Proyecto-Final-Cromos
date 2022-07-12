@@ -7,16 +7,19 @@ import "./album.scss";
 
 const Album = () => {
   const { cromos, getCromos } = useContext(SWContext);
-
   const [getCromo, setGetCromo] = useState();
+
 
   const [nombre, setNombre] = useState("");
 
-  const { user } = useContext(JwtContext);
+
 
   useEffect(() => {
     getCromos();
   }, []);
+
+
+  const {user, album} = useContext(JwtContext)
 
   const [lete, setLete] = useState(true);
   const onClickk = () => {
@@ -59,6 +62,7 @@ const Album = () => {
           <Link key={use._id} to={`${use.nombre}`}>
             <figure key={use._id} onClick={() => setGetCromo(use.imagen)}>
               <Cromo cromoImg={use.imagen} cromoNombre={use.nombre}></Cromo>
+
             </figure>
           </Link>
         ))}
@@ -106,6 +110,7 @@ const Album = () => {
       )}
     </div>
   );
-};
+}
+
 
 export default Album;
