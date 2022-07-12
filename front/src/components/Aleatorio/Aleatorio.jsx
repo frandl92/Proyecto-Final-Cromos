@@ -54,8 +54,6 @@ const Aleatorio = () => {
         <button className='añadir'>AÑADIR</button>
       </figure>
     </div>
-
-
       <Repetidos/>
     </>
 

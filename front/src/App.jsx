@@ -26,13 +26,14 @@ function App() {
   const [jwt, setJwt] = useState();
   const [album, setAlbum] = useState();
    const [user, setUser] = useState ([]);
-   console.log(user);
+  const [repe, setRepe] = useState([]);
+   //console.log(user);
 
  
 
   return (
     <>
-      <JwtContext.Provider value={{ isAdmin, setAdmin, jwt, setJwt, user, setUser, album, setAlbum}}>
+      <JwtContext.Provider value={{ isAdmin, setAdmin, jwt, setJwt, user, setUser,repe, setRepe, album, setAlbum}}>
       <SWContextProvider >
         <Router>
           {/* {isAdmin===false ? <Inicio />: <Navigator/>} */}
