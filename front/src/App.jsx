@@ -54,6 +54,7 @@ function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/repetidos" element={<Repetidos />} />
               <Route path="/editar" element={<Editar />} />
+              <Route path="/editar/:nombre" element={<CromoDetail />} />
               <Route path="/crear" element={<Crear />} />
 
             </Routes>
