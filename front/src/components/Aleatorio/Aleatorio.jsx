@@ -30,13 +30,15 @@ const Aleatorio = () => {
 
   let pinta = cromos[cromosDiarios];
 
+  
+
 
   return (
 <>
     <div className='aleatorio'>
       <figure classname="prueba">
         <Cromo cromoImg={pinta.imagen} cromoNombre={pinta.nombre}></Cromo>
-        <BotonAnadir cromoID={pinta._id} />
+        <BotonAnadir cromoID={pinta._id}/>
       </figure>
     
     </div>
