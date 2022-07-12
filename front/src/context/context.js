@@ -15,12 +15,14 @@ export const SWContextProvider = ({ children }) =>{
       const cromosAPI = await fetch("http://localhost:8005/cromos");
       const cromosJSON = await cromosAPI.json();
       setCromos(cromosJSON.Cromo);
-      console.log(cromosJSON.Cromo)
+      
     };
 
     const getUser = async () => {
-      const usuarioApi = await fetch("http://localhost:8005/users/:id");
+      const usuarioApi = await fetch("http://localhost:8005/users/");
       const usuarioJSON = await usuarioApi.json();
+      console.log(usuarioJSON);
+      localStorage.setItem("user1", usuarioJSON)
       setUser(usuarioJSON._id)
       console.log(usuarioJSON._id)
     };
@@ -29,6 +31,7 @@ export const SWContextProvider = ({ children }) =>{
     useEffect(() => {
         
         getCromos();
+        // getUser();
       
       }, []);
 
