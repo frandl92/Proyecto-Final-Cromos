@@ -33,6 +33,8 @@ const BotonAnadir = ({ cromoID }) => {
     botonAnadir(prueba);
   };
 
+  
+
   const botonAnadir = (prueba) => {
     API.patch("users/" + user._id, prueba).then((res) => {
       setUser(res.data.nuevo);
@@ -74,7 +76,7 @@ const BotonAnadir = ({ cromoID }) => {
     <>
       
 
-      <button disabled={true}  onClick={() =>  setDisable(true)} className="añadir">
+      <button onClick={() =>  decidir()} className="añadir">
         AÑADIR
       </button>
 

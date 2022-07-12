@@ -5,8 +5,11 @@ import { SWContext } from '../../context/context';
 import { JwtContext } from '../../context/jwtContext';
 import {API} from "../../sevices/Api"
 
+import Popup from 'reactjs-popup';
+
 const Repetidos = () => {
   const { repe, user, setUser, setRepe } = useContext(JwtContext);
+  const {cromos} = useContext(SWContext)
   
 
 
@@ -34,8 +37,16 @@ const Repetidos = () => {
         {repe.map((use) => (
           <figure key={use._id}>
             <Cromo cromoImg={use.imagen} cromoNombre={use.nombre}></Cromo>
-            <button onClick={() => sendMercado1(use._id)}>ENVIAR A MERCADO</button>
-
+            
+            <Popup trigger={<button onClick={() => sendMercado1(use._id)}>ENVIAR A MERCADO</button>} position="right center">
+    <div>
+        {cromos.map ((cromo) => 
+        
+            <Cromo cromoImg={cromo.imagen} cromoNombre={cromo.cromoNombre}/>
+        
+        )}
+    </div>
+  </Popup>
           </figure>
         ))}
       </div>

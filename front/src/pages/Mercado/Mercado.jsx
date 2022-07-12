@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Mercado.scss';
 import Cromo from '../../components/Cromo/Cromo';
+import PopUp from '../../components/PopUp/PopUp';
 
 const Mercado = () => {
   const [mercado, setMercado] = useState();
@@ -27,7 +28,9 @@ const Mercado = () => {
                 cromoImg={mer.cromo1Id.imagen}
                 cromoNombre={mer.cromo1Id.nombre}
               />
-              <Cromo />
+           
+
+              <PopUp/>
             </div>
           </div>
         ))}
