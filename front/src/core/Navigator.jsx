@@ -45,7 +45,7 @@ const Navigator = () => {
                   <Link to="/album">ÁLBUM</Link>
                 </li>
                 <li className="opcionmenu">
-                  <Link to="/editar">EDITAR</Link>
+                  <Link to="/editar">DETALLES</Link>
                 </li>
                 <li className="opcionmenu">
                   <Link to="/crear">CREAR</Link>

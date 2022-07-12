@@ -60,7 +60,7 @@ const CromoDetail = () => {
             </button>
 
 
-            {isAdmin === true && <BotonBorrar cromoID={detalle._id} />}
+            {isAdmin === '"admin"' && <BotonBorrar cromoID={detalle._id} />}
           </div>
           <div className="div2">
             <img src={detalle.imagenback} alt="imagenBack"></img>

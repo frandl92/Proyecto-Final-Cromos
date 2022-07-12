@@ -35,7 +35,7 @@ const Album = () => {
   return (
     <>
       <div>
-        {isAdmin === true && (
+        {isAdmin === '"admin"'&& (
           <>
 
           <div className="mialbum">
@@ -68,7 +68,7 @@ const Album = () => {
           </>
         )}
 
-        {isAdmin === false && (
+        {isAdmin === '"user"' && (
 
 
           <div className="mialbum">
