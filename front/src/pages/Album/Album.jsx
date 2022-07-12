@@ -32,11 +32,11 @@ const Album = () => {
     
   };
 
-  ////////----------------buscador-------------------------////////////////////
 
-  // const filterCromos = cromos.filter((cromo) =>
-  //   cromo.nombre.toLowerCase().includes(nombre.toLowerCase())
-  // );
+
+  const filterCromos = cromos.filter((cromo) =>
+    cromo.nombre.toLowerCase().includes(nombre.toLowerCase())
+  );
 
   return (
     <div className="mialbum">
@@ -52,28 +52,7 @@ const Album = () => {
         ></img>
       </div>
 
-      {/* --------BUSCADOR---------- */}
-
-      {/* <div >
-        <label htmlFor="buscador"> Busca un cromo de la coleccion </label>
-        <input
-          type="text"
-          id="buscador"
-          
-          onChange={(evento) => buscar(evento)}
-        />
-      </div>
-
-      <div className="filtrado">
-        {filterCromos.map((filtrado) => (
-          <figure >
-            <Cromo
-              cromoImg={filtrado.imagen}
-              cromoNombre={filtrado.nombre}
-            ></Cromo>
-          </figure>
-        ))}
-      </div> */}
+      
 
       <div className="album">
         {user.album.map((use) => (
@@ -95,20 +74,34 @@ const Album = () => {
           <h1 className="titulo2">
             EXISTEN TODOS ESTOS, SE CONSTANTE PARA CONSEGUIRLOS
           </h1>
-          <div className="album">
-            {cromos.map((cromo) => (
-              <figure
-                key={cromo._id}
-                className="opaco"
-                onClick={() => setGetCromo(cromo.imagen)}
-              >
-                <Cromo
-                  cromoImg={cromo.imagen}
-                  cromoNombre={cromo.nombre}
-                ></Cromo>
-              </figure>
-            ))}
-          </div>
+
+          {/* --------BUSCADOR---------- */}
+
+      <div className="buscador">
+        <label htmlFor="buscador"> Busca un cromo de la coleccion </label>
+        <input
+          type="text"
+          id="buscador"
+          
+          onChange={(evento) => buscar(evento)}
+        />
+      </div>
+
+      <div className="album">
+        {filterCromos.map((filtrado) => (
+          <figure key={filtrado._id} className="opaco">
+            <Cromo
+            
+              cromoImg={filtrado.imagen}
+              cromoNombre={filtrado.nombre}
+              
+            ></Cromo>
+          </figure>
+        ))}
+      </div>
+
+
+         
         </>
       )}
     </div>
