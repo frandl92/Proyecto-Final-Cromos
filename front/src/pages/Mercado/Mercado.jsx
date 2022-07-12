@@ -28,9 +28,11 @@ const Mercado = () => {
                 cromoImg={mer.cromo1Id.imagen}
                 cromoNombre={mer.cromo1Id.nombre}
               />
+              <Cromo
+                cromoImg={mer.wanted.imagen} cromoNombre={mer.wanted.nombre}/>
            
 
-              <PopUp/>
+              
             </div>
           </div>
         ))}
