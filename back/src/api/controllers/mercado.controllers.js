@@ -7,7 +7,7 @@ const httpStatusCode = require("../../utils/httpstatuscode");
 
     try {
 
-      const allMercado = await Mercado.find().populate("user1Id").populate("user2Id").populate("cromo1Id").populate("cromo2Id")
+      const allMercado = await Mercado.find().populate("user1Id").populate("user2Id").populate("cromo1Id").populate("cromo2Id").populate("wanted")
 
       return res.json({
 

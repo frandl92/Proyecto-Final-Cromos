@@ -21,7 +21,7 @@ const Aleatorio = () => {
     const interval = setInterval(() => {
 
       setNum(randomNumberInRange(0, cromos.length));
-    }, 100);
+    }, 100000);
 
     return () => {
       clearInterval(interval);
