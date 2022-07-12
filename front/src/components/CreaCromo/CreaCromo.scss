@@ -1,16 +1,49 @@
-#creacromo{
 
-    width: 95%;
+
+ #creacromo{
+
+    width: 90%;
+    min-width: 300px;
+    max-width: 700px;
     margin-top: 5%;
     margin: 2%;
+    padding-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
 }
     .agrupa {
-        display: flex;
-        flex-direction: row;
-        /* flex-wrap: wrap; */
-        width: 93%;
+        width: 90%;
         gap: 5%;
-    }
+        max-width: 100%;
+
+        .campo{
+
+            width: 500px;
+        }
+        .opciones{
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            gap: 30px;
+            color:#069a94;
+            font-weight: 600;
+
+            .campito{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                min-width: 250px;
+            }
+            .campitoposicion{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                max-width: 50px;
+            }
+        }
+
+  }
+    
 
     .linkregistro{
         margin-bottom: 17%;
