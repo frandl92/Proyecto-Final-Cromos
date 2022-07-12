@@ -4,6 +4,7 @@ import "./Navigator.scss";
 import {JwtContext} from "../context/jwtContext";
 import axios from "axios";
 import ButtonLogout from '../components/Logout/ButtonLogout';
+import Hamburguesa from '../components/Hamburguesa/Hamburguesa';
 
 
 
@@ -12,7 +13,6 @@ const Navigator = () => {
   const { jwt, isAdmin, setAdmin} = useContext(JwtContext);
 
   // const [admin, setAdmin] = useState([]);
-
 
   useEffect(() => {
     const getAllUsuarios = async () => {
@@ -27,46 +27,54 @@ const Navigator = () => {
   })
 
   return (
-    <div>
+    <>
+   
+    <div className="visible">
       <ul>
 
-      <li className="logo">
-        <img src='./assets/LogoCromos.png' alt='logo'/>
-        <h3>CROMIFY</h3>
-      </li>
-      
-      {jwt ? (
-        <>
-        <li className="opcionmenu">
-          <Link to='/inicio'>INICIO</Link>
-        </li>
-        <li className="opcionmenu">
-          <Link to='/cromo'>CROMOS</Link>
-        </li>
-        <li className="opcionmenu">
-          <Link to='/album'>ALBUM</Link>
-        </li>
-        <li className="opcionmenu">
-          <Link to='/mercado'>MERCADO</Link>
+        <li className="logo">
+          <img src='./assets/LogoCromos.png' alt='logo' />
+          <h3>CROMIFY</h3>
         </li>
 
-        {isAdmin===true && (
+        {jwt ? (
           <>
-          <li className="opcionmenu">
-          <Link to='/editar'>EDITAR</Link>
-        </li>
-        <li className="opcionmenu">
-          <Link to='/crear'>CREAR</Link>
-        </li>
-        </>)}
-        
-        <li> <ButtonLogout/> </li>
+            <li className="opcionmenu">
+              <Link to='/inicio'>INICIO</Link>
+            </li>
+            <li className="opcionmenu">
+              <Link to='/cromo'>CROMOS</Link>
+            </li>
+            <li className="opcionmenu">
+              <Link to='/album'>ALBUM</Link>
+            </li>
+            <li className="opcionmenu">
+              <Link to='/mercado'>MERCADO</Link>
+            </li>
 
-      </>): null}
+            {isAdmin === true && (
+              <>
+                <li className="opcionmenu">
+                  <Link to='/editar'>EDITAR</Link>
+                </li>
+                <li className="opcionmenu">
+                  <Link to='/crear'>CREAR</Link>
+                </li>
+              </>)}
+
+            <li> <ButtonLogout /> </li>
+
+
+          </>) : null}
 
       </ul>
-        
+
     </div>
+    
+<div className="oculto">
+        <Hamburguesa/ >
+</div>
+    </>
   );
 };
 
