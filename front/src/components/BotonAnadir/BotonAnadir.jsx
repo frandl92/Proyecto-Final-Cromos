@@ -15,8 +15,13 @@ const BotonAnadir = ({ cromoID }) => {
   // } }}
 
   let prueba;
+  const [disable, setDisable] = useState(false);
 
   const decidir = () => {
+
+
+
+    setDisable(true)
     if (user.album.length > 0) {
       for (const cromo of user.album) {
         if (cromo._id === cromoID) {
@@ -31,6 +36,8 @@ const BotonAnadir = ({ cromoID }) => {
     }
 
     botonAnadir(prueba);
+
+    
   };
 
   
@@ -62,26 +69,14 @@ const BotonAnadir = ({ cromoID }) => {
     getCromos();
   }, []);
 
-  const [visible, setVisible] = useState(false);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setVisible(true);
-    }, 3000);
-  });
-
-  const [disable, setDisable] = useState(false);
+ 
 
   return (
-    <>
-      
+    <button onClick={() => decidir()} disabled={disable}  className="añadir">
+      AÑADIR
+    </button>
 
-      <button onClick={() =>  decidir()} className="añadir">
-        AÑADIR
-      </button>
-
-      
-    </>
   );
 };
 

@@ -55,10 +55,18 @@ const Mercado = () => {
                 cromoImg={mer.cromo1Id.imagen}
                 cromoNombre={mer.cromo1Id.nombre}
               />
+
             
-              {user.album.includes(mer.cromo1Id) ? <button onClick={()=> onClickk(mer.cromo1Id._id, mer.user1Id._id, mer.wanted._id, mer._id)}> ACEPTAR CAMBIO</button> : null }
+              
               
              
+
+              <Cromo
+                cromoImg={mer.wanted.imagen} cromoNombre={mer.wanted.nombre}/>
+           
+            {user.album.includes(mer.cromo1Id) ? <button onClick={()=> onClickk(mer.cromo1Id._id, mer.user1Id._id, mer.wanted._id, mer._id)}> ACEPTAR CAMBIO</button> : null }
+              
+
             </div>
           </div>
         ))}
