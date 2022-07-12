@@ -55,7 +55,7 @@ const Album = () => {
 
             <div className="album" id="adminAlbum">
               {filterCromos.map((filtrado) => (
-                <figure key={filtrado._id} className="opaco">
+                <figure key={filtrado._id} >
                   <Cromo
                     cromoImg={filtrado.imagen}
                     cromoNombre={filtrado.nombre}
@@ -69,14 +69,16 @@ const Album = () => {
         )}
 
         {isAdmin === false && (
-          <div className="mialbum" id="opaco">
+
+
+          <div className="mialbum">
             <div className="arriba">
               <img
                 src="https://cdn-icons-png.flaticon.com/512/1902/1902705.png"
                 alt="album"
               ></img>
               <h1 className="titulo1">
-                Bienvenido {user.usuario}, este es tu album
+                Bienvenid@ {user.usuario}, este es tu álbum
               </h1>
               <img
                 src="https://cdn-icons-png.flaticon.com/512/1902/1902705.png"

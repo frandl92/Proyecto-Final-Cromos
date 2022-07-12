@@ -74,7 +74,7 @@ const Navigator = () => {
                   <Link to="/cromo">CROMOS</Link>
                 </li>
                 <li className="opcionmenu">
-                  <Link to="/album">ALBUM</Link>
+                  <Link to="/album">ÁLBUM</Link>
                 </li>
                 <li className="opcionmenu">
                   <Link to="/mercado">MERCADO</Link>
