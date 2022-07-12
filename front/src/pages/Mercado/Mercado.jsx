@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './Mercado.scss';
 import Cromo from '../../components/Cromo/Cromo';
 import PopUp from '../../components/PopUp/PopUp';
+import { JwtContext } from '../../context/jwtContext';
+
 
 const Mercado = () => {
   const [mercado, setMercado] = useState();
+  const {user} = useContext(JwtContext)
 
   useEffect(() => {
     const getMercado = async () => {
@@ -30,7 +33,15 @@ const Mercado = () => {
               />
            
 
+
+
+
               <PopUp/>
+
+              
+
+
+
             </div>
           </div>
         ))}

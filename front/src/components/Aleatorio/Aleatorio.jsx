@@ -35,13 +35,19 @@ const Aleatorio = () => {
 
   return (
 <>
+
+<h2 className='centrar'>  ¡Date prisa para elegir tu cromo!, solo tienes una oportunidad al día.</h2>
     <div className='aleatorio'>
+
+    
       <figure classname="prueba">
         <Cromo cromoImg={pinta.imagen} cromoNombre={pinta.nombre}></Cromo>
         <BotonAnadir cromoID={pinta._id} />
       </figure>
     
     </div>
+
+    <h2 className='centrar'>Estos son tus cromos repetidos:</h2>
       <Repetidos/>
     </>
 
