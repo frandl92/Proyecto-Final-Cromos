@@ -11,24 +11,16 @@ const Album = () => {
   const { cromos, getCromos } = useContext(SWContext);
   const [getCromo, setGetCromo] = useState();
   const {user, album} = useContext(JwtContext)
-
-
-  
-
-  
   
   useEffect(()=> {
     getCromos();
   },[])
 
   
-
   const [lete, setLete] = useState(true);
   const onClickk = () => {
     setLete(!lete);
   };
-
-
 
   return (
 

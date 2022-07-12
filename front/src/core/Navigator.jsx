@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./Navigator.scss";
 import { JwtContext } from "../context/jwtContext";
 import axios from "axios";
+
 import ButtonLogout from "../components/Logout/ButtonLogout";
 
 const Navigator = () => {
@@ -23,6 +24,7 @@ const Navigator = () => {
   });
 
   return (
+
     <div className="navegador">
       <div className="logo">
         <img src="./assets/LogoCromos.png" alt="logo" />
