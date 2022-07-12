@@ -32,11 +32,7 @@ const Inicio = () => {
       <button className="buttonInicio"><a href="https://www.bitmoji.com/" target="_blank">LINK</a></button>
     </section>
 
-    <section>
-      <PopUp></PopUp>
-    </section>
-
-    
+   
 
 
 
