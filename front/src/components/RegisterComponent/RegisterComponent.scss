@@ -1,6 +1,6 @@
 .register{
-    width: 500px;
-    min-height: 350px;
+    min-width: 60vw;
+    min-height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,6 +9,7 @@
     border: 6px solid;
     border-image:linear-gradient(45deg, #069a94, greenyellow,#d4751d, rgb(47, 206, 255)) 1;
     gap: 5px;
+   
 
     input{
         width: 80%;
@@ -40,6 +41,7 @@
 
     .registrar{
         margin-top: 10px;
+        margin-bottom: 30px;
         box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
         background-color: #069a94;
         padding: 10px 20px;
