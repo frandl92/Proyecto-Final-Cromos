@@ -3,10 +3,11 @@ const Schema = mongoose.Schema;
 
 const MercadoSchema = new Schema(
     {
-        user1Id: {type: String},
-        user2Id: {type: String},
-        cromo1Id: {type: String},
-        cromo2Id: {type: String},
+        user1Id: {type: Schema.Types.ObjectId, ref: "users", required: false},
+        user2Id: {type: Schema.Types.ObjectId, ref: "users", required: false},
+        cromo1Id: {type: Schema.Types.ObjectId, ref: "cromos", required: false},
+        cromo2Id: {type: Schema.Types.ObjectId, ref: "cromos", required: false},
+        wanted: {type: String}
        
     },
     {timestamps: true}

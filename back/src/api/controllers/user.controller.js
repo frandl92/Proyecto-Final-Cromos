@@ -121,16 +121,20 @@ const quitarCromo = async (req, res, next) => {
       
     deleteCromo = '"'+deleteCromo+'"'
     const find = usuarioData.repetido.indexOf(usuarioData.repetido.find(element => JSON.stringify(element) === deleteCromo))    
+    console.log("este es nuestro" + deleteCromo);
     
     let repetidos = [...usuarioData.repetido]
-    console.log(repetidos);
+   
+    console.log("paso 1" , usuarioData);
 
     const remp = usuarioData.repetido.splice(find,1)
-
-      
+   
+    console.log("paso 2" , usuarioData);
+          
     const usuarioDB = await User.findByIdAndUpdate(id, usuarioData);
 
-    return res.status(200).json({ nuevo: usuarioDB, vieja: usuarioData });
+    
+    return res.status(200).json({ nuevo: await (await usuarioData.populate("album")).populate("repetido"), vieja: usuarioDB });
   } catch (error) {
     return next(error);
   }

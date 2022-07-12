@@ -1,4 +1,5 @@
 import React from 'react'
+import PopUp from '../../components/PopUp/PopUp';
 // import LoginComponent from '../../components/LoginComponent/LoginComponent'
 
 // import RegisterComponent from '../../components/RegisterComponent/RegisterComponent'
@@ -28,8 +29,14 @@ const Inicio = () => {
 
     <section className="link">
       <h4 className="inicioh4">Tú también puedes diseñar tus propios cromos, clica aquí para saber cómo</h4>
-      <button className="buttonInicio"><a href="https://www.bitmoji.com/">LINK</a></button>
+      <button className="buttonInicio"><a href="https://www.bitmoji.com/" target="_blank">LINK</a></button>
     </section>
+
+    <section>
+      <PopUp></PopUp>
+    </section>
+
+    
 
 
 
